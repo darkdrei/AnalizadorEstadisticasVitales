@@ -12,11 +12,11 @@ import java.util.ArrayList;
  * @author E7250
  */
 public class RegistrosMunicipio {
-    private ArrayList<ControlPapeleriaDefunciones> defunciones;
-    private ArrayList<ControlPapeleriaNacimientos> nacimientos;
+    private ArrayList<EstadisticaVital_defuncion> defunciones;
+    private ArrayList<FilaEstadisticaVitalNacimientos> nacimientos;
     private int municipio;
 
-    public RegistrosMunicipio(ArrayList<ControlPapeleriaDefunciones> defunciones, ArrayList<ControlPapeleriaNacimientos> nacimientos, int municipio) {
+    public RegistrosMunicipio(ArrayList<EstadisticaVital_defuncion> defunciones, ArrayList<FilaEstadisticaVitalNacimientos> nacimientos, int municipio) {
         this.defunciones = defunciones;
         this.nacimientos = nacimientos;
         this.municipio = municipio;
@@ -33,19 +33,19 @@ public class RegistrosMunicipio {
         return m.getMunicipio(this.getMunicipio());
     }
 
-    public ArrayList<ControlPapeleriaDefunciones> getDefunciones() {
+    public ArrayList<EstadisticaVital_defuncion> getDefunciones() {
         return defunciones;
     }
 
-    public void setDefunciones(ArrayList<ControlPapeleriaDefunciones> defunciones) {
+    public void setDefunciones(ArrayList<EstadisticaVital_defuncion> defunciones) {
         this.defunciones = defunciones;
     }
 
-    public ArrayList<ControlPapeleriaNacimientos> getNacimientos() {
+    public ArrayList<FilaEstadisticaVitalNacimientos> getNacimientos() {
         return nacimientos;
     }
 
-    public void setNacimientos(ArrayList<ControlPapeleriaNacimientos> nacimientos) {
+    public void setNacimientos(ArrayList<FilaEstadisticaVitalNacimientos> nacimientos) {
         this.nacimientos = nacimientos;
     }
 
