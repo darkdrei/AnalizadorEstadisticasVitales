@@ -5,10 +5,18 @@
  */
 package logica;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author E7250
  */
 public class ContenedorRegistroMunicio {
+    private ArrayList<RegistrosMunicipio> registros;
+
+    public ContenedorRegistroMunicio() {
+        registros = new ArrayList<>();
+    }
+    
     
 }
