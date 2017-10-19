@@ -17,6 +17,16 @@ public class ContenedorRegistroMunicio {
     public ContenedorRegistroMunicio() {
         registros = new ArrayList<>();
     }
+
+    public ArrayList<RegistrosMunicipio> getRegistros() {
+        return registros;
+    }
+
+    public void setRegistros(ArrayList<RegistrosMunicipio> registros) {
+        this.registros = registros;
+    }
+    
+    
     
     
 }
