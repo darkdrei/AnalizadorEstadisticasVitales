@@ -10,20 +10,23 @@ package logica;
  * @author E7250
  */
 public class AnalizadorCalidad implements OperacionesCalidad{
-    private RegistrosMunicipio datos;
+    private ContenedorRegistroMunicio datos;
 
     public AnalizadorCalidad() {
-        this.datos = new RegistrosMunicipio();
+        this.datos = new ContenedorRegistroMunicio();
     }
 
-    public RegistrosMunicipio getDatos() {
+    public ContenedorRegistroMunicio getDatos() {
         return datos;
     }
 
-    public void setDatos(RegistrosMunicipio datos) {
+    public void setDatos(ContenedorRegistroMunicio datos) {
         this.datos = datos;
     }
     
+    public void addRegistro(RegistrosMunicipio r){
+        this.datos.addRegistro(r);
+    }
     
 
     @Override
