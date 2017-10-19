@@ -9,6 +9,32 @@ package logica;
  *
  * @author E7250
  */
-public class AnalizadorCalidad {
+public class AnalizadorCalidad implements OperacionesCalidad{
+    private RegistrosMunicipio datos;
+
+    public AnalizadorCalidad() {
+        this.datos = new RegistrosMunicipio();
+    }
+
+    public RegistrosMunicipio getDatos() {
+        return datos;
+    }
+
+    public void setDatos(RegistrosMunicipio datos) {
+        this.datos = datos;
+    }
+    
+    
+
+    @Override
+    public void analizarCalidaDeLaInformacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void analizarCalidaDeLaInformacion(Object data) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     
 }
