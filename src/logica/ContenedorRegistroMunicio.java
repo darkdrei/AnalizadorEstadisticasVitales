@@ -21,6 +21,7 @@ public class ContenedorRegistroMunicio {
     public ArrayList<RegistrosMunicipio> getRegistros() {
         return registros;
     }
+    
 
     public void setRegistros(ArrayList<RegistrosMunicipio> registros) {
         this.registros = registros;
