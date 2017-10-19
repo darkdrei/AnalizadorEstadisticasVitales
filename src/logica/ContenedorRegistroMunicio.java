@@ -26,7 +26,13 @@ public class ContenedorRegistroMunicio {
         this.registros = registros;
     }
     
+    public void addRegistro(RegistrosMunicipio r)  {
+        this.registros.add(r);
+    } 
     
+    public int size(){
+        return this.registros.size();
+    }
     
     
 }
