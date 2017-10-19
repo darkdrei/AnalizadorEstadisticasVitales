@@ -56,8 +56,4 @@ public class RegistrosMunicipio {
     public void setMunicipio(int municipio) {
         this.municipio = municipio;
     }
-    
-    
-    
-    
 }
