@@ -27,7 +27,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
  *
  * @author dark
  */
-public class Analisis implements OperacionesLibro {
+public class Analisis implements OperacionesLibro, OperacionesCalidad {
 
     private boolean semaforo;
     private File file;
@@ -54,6 +54,7 @@ public class Analisis implements OperacionesLibro {
     public void setReporte(ArrayList<TemporalInfo> reporte) {
         this.reporte = reporte;
     }
+    
 
     public Analisis(File control_prenatal_defuncion, File control_prenatal_vivo, File deuda_certificado, File estadistica_vital_defunfion, File estadistica_vital_nacimientos) {
         this.file = estadistica_vital_defunfion;
@@ -218,7 +219,7 @@ public class Analisis implements OperacionesLibro {
             tem_info.setAnios_vivos(this.getControl_prenatal_vivo().getAnios());
             tem_info.setAnios_difuntos(this.getControl_prenatal_defuncion().getAnios());
             this.reporte.add(tem_info);
-            this.analizador_calidad.addRegistro(new RegistrosMunicipio(this.getControl_prenatal_defuncion()., nacimientos, n));
+            this.analizador_calidad.addRegistro(new RegistrosMunicipio(this.getEstadistica_vital_defunfion().getDefunciones(), this.getEstadistica_vital_nacimientos().getNacimientos(), n));
             /**
              * **************************************************************
              */
@@ -241,6 +242,16 @@ public class Analisis implements OperacionesLibro {
         this.getControl_prenatal_defuncion().getColumna().removeAll(this.getEstadistica_vital_defunfion().getColumna());
 //        System.out.println(this.getControl_prenatal_vivo().getColumna());
 //        System.out.println(this.getControl_prenatal_defuncion().getColumna());
+    }
+
+    @Override
+    public void analizarCalidaDeLaInformacion() {
+        
+    }
+
+    @Override
+    public void analizarCalidaDeLaInformacion(Object data) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public class TemporalInfo {
@@ -1075,5 +1086,4 @@ public class Analisis implements OperacionesLibro {
     public ArrayList<Object> extraerNodos(ArrayList<String> op) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }
