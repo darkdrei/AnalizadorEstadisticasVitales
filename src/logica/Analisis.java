@@ -45,6 +45,7 @@ public class Analisis implements OperacionesLibro {
     private String respuesta = "";
     private String info = "";
     private ArrayList<TemporalInfo> reporte = new ArrayList<>();
+    private AnalizadorCalidad analizador_calidad;
 
     public ArrayList<TemporalInfo> getReporte() {
         return reporte;
@@ -61,6 +62,7 @@ public class Analisis implements OperacionesLibro {
         this.deuda_certificado = new ArchivoDeudaCertificado(deuda_certificado);
         this.estadistica_vital_defunfion = new ArchivoEstadisticaVitalDefunciones(estadistica_vital_defunfion);
         this.estadistica_vital_nacimientos = new ArchivoEstadisticaVitalNacimientos(estadistica_vital_nacimientos);
+        this.analizador_calidad = new AnalizadorCalidad();
     }
 
     public Analisis() {
@@ -72,6 +74,15 @@ public class Analisis implements OperacionesLibro {
         this.estadistica_vital_nacimientos = new ArchivoEstadisticaVitalNacimientos();
         this.estadistica_vital_defunfion_todos = new ArchivoEstadisticaVitalDefunciones();
         this.estadistica_vital_nacimientos_todos = new ArchivoEstadisticaVitalNacimientos();
+        this.analizador_calidad = new AnalizadorCalidad();
+    }
+
+    public AnalizadorCalidad getAnalizador_calidad() {
+        return analizador_calidad;
+    }
+
+    public void setAnalizador_calidad(AnalizadorCalidad analizador_calidad) {
+        this.analizador_calidad = analizador_calidad;
     }
 
     @Override
