@@ -218,7 +218,7 @@ public class Analisis implements OperacionesLibro {
             tem_info.setAnios_vivos(this.getControl_prenatal_vivo().getAnios());
             tem_info.setAnios_difuntos(this.getControl_prenatal_defuncion().getAnios());
             this.reporte.add(tem_info);
-            
+            this.analizador_calidad.addRegistro(new RegistrosMunicipio(this.getControl_prenatal_defuncion()., nacimientos, n));
             /**
              * **************************************************************
              */
