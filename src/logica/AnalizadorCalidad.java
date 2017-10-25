@@ -49,7 +49,16 @@ public class AnalizadorCalidad implements OperacionesCalidad{
             ArrayList<FilaEstadisticaVitalNacimientos> talla = new ArrayList<>();
             int con_peso_tiempo_gestacion_talla =0;
             ArrayList<FilaEstadisticaVitalNacimientos> peso_tiempo_gestacion_talla = new ArrayList<>();
-            
+            int con_grupo_sanguineo =0;
+            ArrayList<FilaEstadisticaVitalNacimientos> grupo_sanguineo = new ArrayList<>();
+            int con_factor_rh =0;
+            ArrayList<FilaEstadisticaVitalNacimientos> factor_rh = new ArrayList<>();
+            int con_direccion =0;
+            ArrayList<FilaEstadisticaVitalNacimientos> direccion = new ArrayList<>();
+            int con_edad_padre =0;
+            ArrayList<FilaEstadisticaVitalNacimientos> edad_padre = new ArrayList<>();
+            int con_estado =0;
+            ArrayList<FilaEstadisticaVitalNacimientos> estado = new ArrayList<>();
             for(FilaEstadisticaVitalNacimientos n :r.getNacimientos()){
                 //System.out.println(n.getArea_nacimiento()+"  "+n.getSitio_nacimiento());
                 if (n.getArea_nacimiento().equals("RURAL DISPERSO") && n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD")){
@@ -57,7 +66,7 @@ public class AnalizadorCalidad implements OperacionesCalidad{
                     area_nacimiento.add(n);
                 }
                 
-                if(n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD") && !n.getProfesion_certificador().equals("M�DICO")){
+                if(n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD") && !n.getParto_atendido_por().equals("M�DICO")){
                     con_sitio_nacimiento++;
                     sitio_nacimiento.add(n);
                     System.out.println(n.getProfesion_certificador());
@@ -113,8 +122,36 @@ public class AnalizadorCalidad implements OperacionesCalidad{
                     if (semana>=37 && semana<=42 && peso2> 2500 && talla2 < 45){
                         con_peso_tiempo_gestacion_talla++;
                         peso_tiempo_gestacion_talla.add(n);
-                        System.out.println(n.getTalla()+" ++ "+n.getPeso()+ "  "+n.getTiempo_de_gestion()+"  "+n.getNumero_certificado());
+                        //System.out.println(n.getTalla()+" ++ "+n.getPeso()+ "  "+n.getTiempo_de_gestion()+"  "+n.getNumero_certificado());
                     }
+                }
+                if(!Pattern.matches("[A-Za-z]{1,2}", n.getGrupo_sanguineo())){
+                    //System.out.println(n.getGrupo_sanguineo());
+                    con_grupo_sanguineo++;
+                    grupo_sanguineo.add(n);
+                }
+                //System.err.println(n.getFactor_rh());
+                if(!Pattern.matches("POSITIVO|NEGATIVO", n.getFactor_rh().toUpperCase())){
+                    //System.err.println(n.getFactor_rh()+"  *");
+                    con_factor_rh++;
+                    factor_rh.add(n);
+                }
+                if(n.getDireccion().length()==0){
+                    //System.err.println(n.getFactor_rh()+"  *");
+                    con_direccion++;
+                    direccion.add(n);
+                }
+                if(!Pattern.matches("\\d+{2,2}\\(4\\)", n.getEdad_padre())){
+                    //System.err.println(n.getEdad_padre()+"  *");
+                    con_edad_padre++;
+                    edad_padre.add(n);
+                }
+                System.out.println(n.getEstado_certificado());
+                if(!Pattern.matches("CONFITMADO", n.getEstado_certificado().toUpperCase())){
+                    //System.err.println(n.getEdad_padre()+"  *");
+                    con_estado++;
+                    estado.add(n);
+                    System.out.println(n.getEstado_certificado());
                 }
             }
         }
