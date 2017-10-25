@@ -58,7 +58,7 @@ public class AnalizadorCalidad implements OperacionesCalidad{
                     System.out.println(n.getProfesion_certificador());
                 }
                 
-                if (Pattern.matches("\\d{2,2}", n.getTiempo_de_gestion())){
+                if (Pattern.matches("\\d{1,2}", n.getTiempo_de_gestion())){
                     int semana = Integer.parseInt(n.getTiempo_de_gestion());
                     if (semana < 37 || semana > 42){
                         con_semana_gestacion++;
@@ -72,14 +72,22 @@ public class AnalizadorCalidad implements OperacionesCalidad{
                     float peso2 = Float.parseFloat(n.getPeso());
                     if (peso2 < 2500 ){
                         con_peso++;
-                        System.out.println(con_peso+" "+n.getPeso()+ "  "+n.getMunicipio()+"  "+n.getNumero_certificado());
-                        
+                        //System.out.println(con_peso+" "+n.getPeso()+ "  "+n.getMunicipio()+"  "+n.getNumero_certificado());
                         peso.add(n);
                     }
                 }else{
                     con_peso++;
                     peso.add(n);
-                    System.out.println(con_peso+" ++ "+n.getPeso()+ "  "+n.getMunicipio()+"  "+n.getNumero_certificado());
+                    //System.out.println(con_peso+" ++ "+n.getPeso()+ "  "+n.getMunicipio()+"  "+n.getNumero_certificado());
+                }
+                if(Pattern.matches("\\d{1,6}", n.getPeso()) && Pattern.matches("\\d{1,2}", n.getTiempo_de_gestion())){
+                    float peso2 = Float.parseFloat(n.getPeso());
+                    int semana = Integer.parseInt(n.getTiempo_de_gestion());
+                    if (peso2<2500 && semana>37){
+                        con_peso_tiempo_gestacion++;
+                        peso_tiempo_gestacion.add(n);
+                        System.out.println(con_peso+" ++ "+n.getPeso()+ "  "+n.getTiempo_de_gestion()+"  "+n.getNumero_certificado());
+                    }
                 }
             }
         }
