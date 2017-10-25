@@ -45,6 +45,11 @@ public class AnalizadorCalidad implements OperacionesCalidad{
             ArrayList<FilaEstadisticaVitalNacimientos> peso = new ArrayList<>();
             int con_peso_tiempo_gestacion =0;
             ArrayList<FilaEstadisticaVitalNacimientos> peso_tiempo_gestacion = new ArrayList<>();
+            int con_talla =0;
+            ArrayList<FilaEstadisticaVitalNacimientos> talla = new ArrayList<>();
+            int con_peso_tiempo_gestacion_talla =0;
+            ArrayList<FilaEstadisticaVitalNacimientos> peso_tiempo_gestacion_talla = new ArrayList<>();
+            
             for(FilaEstadisticaVitalNacimientos n :r.getNacimientos()){
                 //System.out.println(n.getArea_nacimiento()+"  "+n.getSitio_nacimiento());
                 if (n.getArea_nacimiento().equals("RURAL DISPERSO") && n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD")){
@@ -86,7 +91,29 @@ public class AnalizadorCalidad implements OperacionesCalidad{
                     if (peso2<2500 && semana>37){
                         con_peso_tiempo_gestacion++;
                         peso_tiempo_gestacion.add(n);
-                        System.out.println(con_peso+" ++ "+n.getPeso()+ "  "+n.getTiempo_de_gestion()+"  "+n.getNumero_certificado());
+                        //System.out.println(con_peso+" ++ "+n.getPeso()+ "  "+n.getTiempo_de_gestion()+"  "+n.getNumero_certificado());
+                    }
+                }
+                if (Pattern.matches("\\d{1,6}", n.getTalla())){
+                    float talla2 = Float.parseFloat(n.getTalla());
+                    if (talla2 < 45 || talla2>55 ){
+                        con_talla++;
+                        //System.out.println(con_peso+" "+n.getTalla()+ "  "+n.getMunicipio()+"  "+n.getNumero_certificado());
+                        talla.add(n);
+                    }
+                }else{
+                    con_talla++;
+                    talla.add(n);
+                    //System.out.println(con_peso+" ++ "+n.getPeso()+ "  "+n.getMunicipio()+"  "+n.getNumero_certificado());
+                }
+                if(Pattern.matches("\\d{1,6}", n.getPeso()) && Pattern.matches("\\d{1,2}", n.getTiempo_de_gestion()) && Pattern.matches("\\d{1,6}", n.getTalla())){
+                    float peso2 = Float.parseFloat(n.getPeso());
+                    int semana = Integer.parseInt(n.getTiempo_de_gestion());
+                    float talla2 = Float.parseFloat(n.getTalla());
+                    if (semana>=37 && semana<=42 && peso2> 2500 && talla2 < 45){
+                        con_peso_tiempo_gestacion_talla++;
+                        peso_tiempo_gestacion_talla.add(n);
+                        System.out.println(n.getTalla()+" ++ "+n.getPeso()+ "  "+n.getTiempo_de_gestion()+"  "+n.getNumero_certificado());
                     }
                 }
             }
