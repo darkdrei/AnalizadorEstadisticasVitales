@@ -246,7 +246,7 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
 
     @Override
     public void analizarCalidaDeLaInformacion() {
-        
+        this.analizador_calidad.analizarCalidaDeLaInformacion();
     }
 
     @Override
