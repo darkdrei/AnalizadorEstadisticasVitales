@@ -41,6 +41,10 @@ public class AnalizadorCalidad implements OperacionesCalidad{
             ArrayList<FilaEstadisticaVitalNacimientos> sitio_nacimiento = new ArrayList<>();
             int con_semana_gestacion=0;
             ArrayList<FilaEstadisticaVitalNacimientos> semana_gestacion = new ArrayList<>();
+            int con_peso =0;
+            ArrayList<FilaEstadisticaVitalNacimientos> peso = new ArrayList<>();
+            int con_peso_tiempo_gestacion =0;
+            ArrayList<FilaEstadisticaVitalNacimientos> peso_tiempo_gestacion = new ArrayList<>();
             for(FilaEstadisticaVitalNacimientos n :r.getNacimientos()){
                 //System.out.println(n.getArea_nacimiento()+"  "+n.getSitio_nacimiento());
                 if (n.getArea_nacimiento().equals("RURAL DISPERSO") && n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD")){
@@ -57,7 +61,6 @@ public class AnalizadorCalidad implements OperacionesCalidad{
                 if (Pattern.matches("\\d{2,2}", n.getTiempo_de_gestion())){
                     int semana = Integer.parseInt(n.getTiempo_de_gestion());
                     if (semana < 37 || semana > 42){
-                        System.out.println(n.getTiempo_de_gestion());
                         con_semana_gestacion++;
                         semana_gestacion.add(n);
                     }
@@ -65,8 +68,19 @@ public class AnalizadorCalidad implements OperacionesCalidad{
                     con_semana_gestacion++;
                     semana_gestacion.add(n);
                 }
-                
-                
+                if (Pattern.matches("\\d{1,6}", n.getPeso())){
+                    float peso2 = Float.parseFloat(n.getPeso());
+                    if (peso2 < 2500 ){
+                        con_peso++;
+                        System.out.println(con_peso+" "+n.getPeso()+ "  "+n.getMunicipio()+"  "+n.getNumero_certificado());
+                        
+                        peso.add(n);
+                    }
+                }else{
+                    con_peso++;
+                    peso.add(n);
+                    System.out.println(con_peso+" ++ "+n.getPeso()+ "  "+n.getMunicipio()+"  "+n.getNumero_certificado());
+                }
             }
         }
     }
