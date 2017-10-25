@@ -36,13 +36,20 @@ public class AnalizadorCalidad implements OperacionesCalidad{
         for ( RegistrosMunicipio r : this.getDatos().getRegistros()){
             int con_area_nacimiento = 0;
             ArrayList<FilaEstadisticaVitalNacimientos> area_nacimiento = new ArrayList<>();
+            int con_sitio_nacimiento = 0;
+            ArrayList<FilaEstadisticaVitalNacimientos> sitio_nacimiento = new ArrayList<>();
             for(FilaEstadisticaVitalNacimientos n :r.getNacimientos()){
                 //System.out.println(n.getArea_nacimiento()+"  "+n.getSitio_nacimiento());
                 if (n.getArea_nacimiento().equals("RURAL DISPERSO") && n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD")){
                     con_area_nacimiento++;
                     area_nacimiento.add(n);
                 }
-                if(n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD"))
+                
+                if(n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD") && !n.getProfesion_certificador().equals("M�DICO")){
+                    con_sitio_nacimiento++;
+                    sitio_nacimiento.add(n);
+                    System.out.println(n.getProfesion_certificador());
+                }
                 
             }
         }
