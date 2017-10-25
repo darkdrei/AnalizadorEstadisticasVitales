@@ -38,7 +38,7 @@ public class analisis {
 //        a.extraerNodos(0);
 //        a.reportActual();
         logica.Analisis a = new logica.Analisis();
-        File vital_vivos[]=new File[]{new File("C:\\Users\\E7250\\Desktop\\Septiembre\\San Jacinto\\nacimientos.xls"),
+        /*File vital_vivos[]=new File[]{new File("C:\\Users\\E7250\\Desktop\\Septiembre\\San Jacinto\\nacimientos.xls"),
                                         new File("C:\\Users\\E7250\\Desktop\\Septiembre\\Marialabaja\\nacimientos.xls"),
                                         new File("C:\\Users\\E7250\\Desktop\\Septiembre\\San Juan Nepomuceno\\nacimientos.xls")};
         File vital_difuntos[]=new File[]{new File("C:\\Users\\E7250\\Desktop\\Septiembre\\San Jacinto\\defunciones.xls"),
@@ -48,11 +48,23 @@ public class analisis {
                                         new File("C:\\Users\\E7250\\Desktop\\Septiembre\\Control de certificados\\2015.xls"),
                                         new File("C:\\Users\\E7250\\Desktop\\Septiembre\\Control de certificados\\2016.xls"),
                                         new File("C:\\Users\\E7250\\Desktop\\Septiembre\\Control de certificados\\2017.xls"),
-                                        new File("C:\\Users\\E7250\\Desktop\\Septiembre\\Control de certificados\\2013.xls")};
-        int muni[]=new int[]{6};
+                                        new File("C:\\Users\\E7250\\Desktop\\Septiembre\\Control de certificados\\2013.xls")};*/
+        File vital_vivos[]=new File[]{new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/San Jacinto/nacimientos.xls"),
+                                        new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/Marialabaja/nacimientos.xls"),
+                                        new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/San Juan Nepomuceno/nacimientos.xls")};
+        File vital_difuntos[]=new File[]{new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/San Jacinto/defunciones.xls"),
+                                        new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/Marialabaja/defunciones.xls"),
+                                        new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/San Juan Nepomuceno/defunciones.xls")};
+        File control[]=new File[]{new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/Control de certificados/2104.xls"),
+                                        new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/Control de certificados/2015.xls"),
+                                        new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/Control de certificados/2016.xls"),
+                                        new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/Control de certificados/2017.xls"),
+                                        new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/Control de certificados/2013.xls")};
+        int muni[]=new int[]{7};
         a.extraerMultiplesArchivos( muni,vital_vivos, vital_difuntos,control );
         a.generarWord("C:\\Users\\E7250\\Documents");
-        System.out.println(a.getInfo());
+        //System.out.println(a.getInfo());
+        a.analizarCalidaDeLaInformacion();
 //      
 //        ArchivoControlPrenatalDefuncion control_prenatal_defuncion = new ArchivoControlPrenatalDefuncion(new File("/home/dark/aaaaa/SOPORTE/CONTROL DE PAPELERIA 2014-DASALUD.xls"));
 //        control_prenatal_defuncion.seleccionarMunicipio(0);
