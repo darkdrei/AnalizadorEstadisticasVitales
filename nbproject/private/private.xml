@@ -3,17 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/E7250/Desktop/Core/gobernacion/src/gobernacion/analisis.java</file>
-            <file>file:/C:/Users/E7250/Desktop/Core/gobernacion/src/logica/ArchivoControlPrenatalDefuncion.java</file>
-            <file>file:/C:/Users/E7250/Desktop/Core/gobernacion/src/logica/ArchivoEstadisticaVitalNacimientos.java</file>
-            <file>file:/C:/Users/E7250/Desktop/Core/gobernacion/src/logica/word/Word.java</file>
-            <file>file:/C:/Users/E7250/Desktop/Core/gobernacion/src/gobernacion/practica.java</file>
-            <file>file:/C:/Users/E7250/Desktop/Core/gobernacion/src/logica/Analisis.java</file>
-            <file>file:/C:/Users/E7250/Desktop/Core/gobernacion/src/logica/word/Word2.java</file>
-            <file>file:/C:/Users/E7250/Desktop/Core/gobernacion/src/logica/Excel.java</file>
-            <file>file:/C:/Users/E7250/Desktop/Core/gobernacion/src/logica/ArchivoControlPrenatalVivo.java</file>
-            <file>file:/C:/Users/E7250/Desktop/Core/gobernacion/src/gobernacion/gestionreporte.java</file>
-            <file>file:/C:/Users/E7250/Desktop/Core/gobernacion/src/gobernacion/Gobernacion.java</file>
+            <file>file:/home/dark/proyectos/AnalizadorEstadisticasVitales/src/logica/ArchivoEstadisticaVitalNacimientos.java</file>
+            <file>file:/home/dark/proyectos/AnalizadorEstadisticasVitales/src/gobernacion/analisis.java</file>
+            <file>file:/home/dark/proyectos/AnalizadorEstadisticasVitales/src/gobernacion/practica.java</file>
+            <file>file:/home/dark/proyectos/AnalizadorEstadisticasVitales/src/logica/FilaEstadisticaVitalNacimientos.java</file>
+            <file>file:/home/dark/proyectos/AnalizadorEstadisticasVitales/src/logica/word/Word.java</file>
+            <file>file:/home/dark/proyectos/AnalizadorEstadisticasVitales/src/logica/Analisis.java</file>
+            <file>file:/home/dark/proyectos/AnalizadorEstadisticasVitales/src/logica/ManejadorMunicipio.java</file>
+            <file>file:/home/dark/proyectos/AnalizadorEstadisticasVitales/src/logica/AnalizadorCalidad.java</file>
+            <file>file:/home/dark/proyectos/AnalizadorEstadisticasVitales/src/gobernacion/test.java</file>
         </group>
     </open-files>
 </project-private>
