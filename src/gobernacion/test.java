@@ -6,6 +6,7 @@
 package gobernacion;
 
 import java.io.File;
+import logica.FileCopy;
 
 /**
  *
@@ -18,8 +19,11 @@ public class test {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        File f = new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/San Jacinto/nacimientos.xls");
-        System.out.println(f.isFile());
+        /*File f = new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/San Jacinto/nacimientos.xls");
+        System.out.println(f.isFile());*/
+        System.out.println("CUÁDRUPLE O MÁS");
+        FileCopy c = new FileCopy();
+        c.fileCopy("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/calidad.xlsx","/home/dark/proyectos/AnalizadorEstadisticasVitales/data/calidad2.xlsx");
     }
     
 }
