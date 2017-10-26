@@ -15,6 +15,32 @@ import java.util.regex.Pattern;
 public class AnalizadorCalidad implements OperacionesCalidad {
 
     private ContenedorRegistroMunicio datos;
+    private int con_area_nacimiento = 0;
+    private ArrayList<FilaEstadisticaVitalNacimientos> area_nacimiento = new ArrayList<>();
+    private int con_sitio_nacimiento = 0;
+    private ArrayList<FilaEstadisticaVitalNacimientos> sitio_nacimiento = new ArrayList<>();
+    private int con_semana_gestacion = 0;
+    private ArrayList<FilaEstadisticaVitalNacimientos> semana_gestacion = new ArrayList<>();
+    private int con_peso = 0;
+    private ArrayList<FilaEstadisticaVitalNacimientos> peso = new ArrayList<>();
+    private int con_peso_tiempo_gestacion = 0;
+    private ArrayList<FilaEstadisticaVitalNacimientos> peso_tiempo_gestacion = new ArrayList<>();
+    private int con_talla = 0;
+    private ArrayList<FilaEstadisticaVitalNacimientos> talla = new ArrayList<>();
+    private int con_peso_tiempo_gestacion_talla = 0;
+    private ArrayList<FilaEstadisticaVitalNacimientos> peso_tiempo_gestacion_talla = new ArrayList<>();
+    private int con_grupo_sanguineo = 0;
+    private ArrayList<FilaEstadisticaVitalNacimientos> grupo_sanguineo = new ArrayList<>();
+    private int con_factor_rh = 0;
+    private ArrayList<FilaEstadisticaVitalNacimientos> factor_rh = new ArrayList<>();
+    int con_direccion = 0;
+    ArrayList<FilaEstadisticaVitalNacimientos> direccion = new ArrayList<>();
+    int con_edad_padre = 0;
+    ArrayList<FilaEstadisticaVitalNacimientos> edad_padre = new ArrayList<>();
+    int con_estado = 0;
+    ArrayList<FilaEstadisticaVitalNacimientos> estado = new ArrayList<>();
+    int con_multiplicidad = 0;
+    ArrayList<FilaEstadisticaVitalNacimientos> multiplicidad = new ArrayList<>();
 
     public AnalizadorCalidad() {
         this.datos = new ContenedorRegistroMunicio();
@@ -35,32 +61,32 @@ public class AnalizadorCalidad implements OperacionesCalidad {
     @Override
     public void analizarCalidaDeLaInformacion() {
         for (RegistrosMunicipio r : this.getDatos().getRegistros()) {
-            int con_area_nacimiento = 0;
-            ArrayList<FilaEstadisticaVitalNacimientos> area_nacimiento = new ArrayList<>();
-            int con_sitio_nacimiento = 0;
-            ArrayList<FilaEstadisticaVitalNacimientos> sitio_nacimiento = new ArrayList<>();
-            int con_semana_gestacion = 0;
-            ArrayList<FilaEstadisticaVitalNacimientos> semana_gestacion = new ArrayList<>();
-            int con_peso = 0;
-            ArrayList<FilaEstadisticaVitalNacimientos> peso = new ArrayList<>();
-            int con_peso_tiempo_gestacion = 0;
-            ArrayList<FilaEstadisticaVitalNacimientos> peso_tiempo_gestacion = new ArrayList<>();
-            int con_talla = 0;
-            ArrayList<FilaEstadisticaVitalNacimientos> talla = new ArrayList<>();
-            int con_peso_tiempo_gestacion_talla = 0;
-            ArrayList<FilaEstadisticaVitalNacimientos> peso_tiempo_gestacion_talla = new ArrayList<>();
-            int con_grupo_sanguineo = 0;
-            ArrayList<FilaEstadisticaVitalNacimientos> grupo_sanguineo = new ArrayList<>();
-            int con_factor_rh = 0;
-            ArrayList<FilaEstadisticaVitalNacimientos> factor_rh = new ArrayList<>();
-            int con_direccion = 0;
-            ArrayList<FilaEstadisticaVitalNacimientos> direccion = new ArrayList<>();
-            int con_edad_padre = 0;
-            ArrayList<FilaEstadisticaVitalNacimientos> edad_padre = new ArrayList<>();
-            int con_estado = 0;
-            ArrayList<FilaEstadisticaVitalNacimientos> estado = new ArrayList<>();
-            int con_multiplicidad = 0;
-            ArrayList<FilaEstadisticaVitalNacimientos> multiplicidad = new ArrayList<>();
+            con_area_nacimiento = 0;
+            area_nacimiento = new ArrayList<>();
+            con_sitio_nacimiento = 0;
+            sitio_nacimiento = new ArrayList<>();
+            con_semana_gestacion = 0;
+            semana_gestacion = new ArrayList<>();
+            con_peso = 0;
+            peso = new ArrayList<>();
+            con_peso_tiempo_gestacion = 0;
+            peso_tiempo_gestacion = new ArrayList<>();
+            con_talla = 0;
+            talla = new ArrayList<>();
+            con_peso_tiempo_gestacion_talla = 0;
+            peso_tiempo_gestacion_talla = new ArrayList<>();
+            con_grupo_sanguineo = 0;
+            grupo_sanguineo = new ArrayList<>();
+            con_factor_rh = 0;
+            factor_rh = new ArrayList<>();
+            con_direccion = 0;
+            direccion = new ArrayList<>();
+            con_edad_padre = 0;
+            edad_padre = new ArrayList<>();
+            con_estado = 0;
+            estado = new ArrayList<>();
+            con_multiplicidad = 0;
+            multiplicidad = new ArrayList<>();
             for (FilaEstadisticaVitalNacimientos n : r.getNacimientos()) {
                 //System.out.println(n.getArea_nacimiento()+"  "+n.getSitio_nacimiento());
                 if (n.getArea_nacimiento().equals("RURAL DISPERSO") && n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD")) {
@@ -168,7 +194,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
                         if ((emb != tem_con && emb > tem_con)) {
                             con_multiplicidad++;
                             multiplicidad.add(n);
-                        }else if (emb != tem_con){
+                        } else if (emb != tem_con) {
                             con_multiplicidad++;
                             multiplicidad.add(n);
                         }
