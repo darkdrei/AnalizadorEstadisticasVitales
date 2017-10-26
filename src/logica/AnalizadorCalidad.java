@@ -33,14 +33,14 @@ public class AnalizadorCalidad implements OperacionesCalidad {
     private ArrayList<FilaEstadisticaVitalNacimientos> grupo_sanguineo = new ArrayList<>();
     private int con_factor_rh = 0;
     private ArrayList<FilaEstadisticaVitalNacimientos> factor_rh = new ArrayList<>();
-    int con_direccion = 0;
-    ArrayList<FilaEstadisticaVitalNacimientos> direccion = new ArrayList<>();
-    int con_edad_padre = 0;
-    ArrayList<FilaEstadisticaVitalNacimientos> edad_padre = new ArrayList<>();
-    int con_estado = 0;
-    ArrayList<FilaEstadisticaVitalNacimientos> estado = new ArrayList<>();
-    int con_multiplicidad = 0;
-    ArrayList<FilaEstadisticaVitalNacimientos> multiplicidad = new ArrayList<>();
+    private int con_direccion = 0;
+    private ArrayList<FilaEstadisticaVitalNacimientos> direccion = new ArrayList<>();
+    private int con_edad_padre = 0;
+    private ArrayList<FilaEstadisticaVitalNacimientos> edad_padre = new ArrayList<>();
+    private int con_estado = 0;
+    private ArrayList<FilaEstadisticaVitalNacimientos> estado = new ArrayList<>();
+    private int con_multiplicidad = 0;
+    private ArrayList<FilaEstadisticaVitalNacimientos> multiplicidad = new ArrayList<>();
 
     public AnalizadorCalidad() {
         this.datos = new ContenedorRegistroMunicio();
