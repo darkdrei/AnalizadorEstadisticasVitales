@@ -60,7 +60,7 @@ public class analisis {
                                         new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/Control de certificados/2016.xls"),
                                         new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/Control de certificados/2017.xls"),
                                         new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/Control de certificados/2013.xls")};
-        int muni[]=new int[]{7};
+        int muni[]=new int[]{7,8};
         a.extraerMultiplesArchivos( muni,vital_vivos, vital_difuntos,control );
         a.generarWord("C:\\Users\\E7250\\Documents");
         //System.out.println(a.getInfo());
