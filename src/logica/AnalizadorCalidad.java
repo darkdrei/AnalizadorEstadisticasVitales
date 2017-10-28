@@ -174,7 +174,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
                     con_edad_padre++;
                     edad_padre.add(n);
                 }
-                //System.out.println(n.getEstado_certificado());
+                
                 if (!Pattern.matches("CONFITMADO", n.getEstado_certificado().toUpperCase())) {
                     //System.err.println(n.getEdad_padre()+"  *");
                     con_estado++;
