@@ -52,6 +52,7 @@ public class CalidadWord extends Reporte {
         integrarTabla(document, "Factor rh: ", this.getFactor_rh());
         integrarTabla(document, "Direccion: ", this.getDireccion());
         integrarTabla(document, "Edad del padre: ", this.getEdad_padre());
+        integrarTabla(document, "Estado del Certificado : ", this.getEstado());
        
         try {
             System.out.println("*****************");
