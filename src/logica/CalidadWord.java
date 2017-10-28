@@ -50,6 +50,7 @@ public class CalidadWord extends Reporte {
         integrarTabla(document, "Peso - Semanas de gestacion  Talla : ", this.getPeso_tiempo_gestacion_talla());
         integrarTabla(document,"Grupo sanguineo : ", this.getGrupo_sanguineo());
         integrarTabla(document, "Factor rh: ", this.getFactor_rh());
+        integrarTabla(document, "Direccion: ", this.getDireccion());
        
         try {
             System.out.println("*****************");
