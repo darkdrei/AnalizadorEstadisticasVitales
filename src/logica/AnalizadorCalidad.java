@@ -41,6 +41,9 @@ public class AnalizadorCalidad implements OperacionesCalidad {
     private ArrayList<FilaEstadisticaVitalNacimientos> estado = new ArrayList<>();
     private int con_multiplicidad = 0;
     private ArrayList<FilaEstadisticaVitalNacimientos> multiplicidad = new ArrayList<>();
+    /*DEFICION DE VARIABLES PARA DEFUNCIONES*/
+    private ArrayList<EstadisticaVital_defuncion> area_defuncion = new ArrayList<>();
+    
 
     public AnalizadorCalidad() {
         this.datos = new ContenedorRegistroMunicio();
@@ -204,6 +207,9 @@ public class AnalizadorCalidad implements OperacionesCalidad {
                     con_multiplicidad++;
                     multiplicidad.add(n);
                 }
+            }
+            for(EstadisticaVital_defuncion d :r.getDefunciones()){
+                
             }
             CalidadWord word = new CalidadWord(con_area_nacimiento, area_nacimiento, con_sitio_nacimiento, sitio_nacimiento, con_semana_gestacion, semana_gestacion, con_peso, peso, con_peso_tiempo_gestacion, peso_tiempo_gestacion, con_talla, talla, con_peso_tiempo_gestacion_talla, peso_tiempo_gestacion_talla, con_grupo_sanguineo, grupo_sanguineo, con_factor_rh, factor_rh, con_direccion, direccion, con_edad_padre, edad_padre, con_estado, estado, con_multiplicidad, multiplicidad);
             word.setMunicipio(r.getMunicipio());
