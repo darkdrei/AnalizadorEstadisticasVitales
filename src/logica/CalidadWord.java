@@ -285,6 +285,41 @@ public class CalidadWord extends Reporte {
                 System.out.println("  " + f.getNumero_certificado() + "  " + f.getFecha_expedicion());
             }
         }
+        if (this.getCon_peso_tiempo_gestacion_talla()> 0) {
+            XWPFParagraph paragraph2 = document.createParagraph();
+            XWPFRun run2 = paragraph2.createRun();
+            run2.addBreak();
+            run2.addBreak();
+            run2.setText("Semanas de gestacion, peso y talla: " + this.getSemana_gestacion().size());
+            XWPFTable table = document.createTable();
+            table.setInsideHBorder(XWPFTable.XWPFBorderType.THICK, 3, 2, "9965F3");
+            table.setCellMargins(10, 10, 0, 0);
+            XWPFTableRow row0 = table.getRow(0);
+            XWPFTableCell cell0 = row0.getCell(0);
+            XWPFParagraph par = cell0.addParagraph();
+            XWPFRun par_run = par.createRun();
+            par_run.setFontFamily("Arial Black");
+            par_run.setFontSize(13);
+            cell0.setColor("9965F3");
+            par_run.setText("Codigo del registro Nacimiento");
+            par_run.setBold(true);
+            XWPFTableCell cell1 = row0.createCell();
+            XWPFParagraph par1 = cell1.addParagraph();
+            XWPFRun par_run1 = par1.createRun();
+            par_run1.setFontFamily("Arial Black");
+            par_run1.setFontSize(13);
+            cell1.setColor("9965F3");
+            par_run1.setText("Fecha de entrega ");
+            par_run.setBold(true);
+            for (FilaEstadisticaVitalNacimientos f : this.getPeso_tiempo_gestacion_talla()) {
+                XWPFTableRow row1 = table.createRow();
+                XWPFTableCell cell11 = row1.getCell(0);
+                cell11.setText(f.getNumero_certificado());
+                XWPFTableCell cell12 = row1.getCell(1);
+                cell12.setText(f.getFecha_expedicion());
+                System.out.println("  " + f.getNumero_certificado() + "  " + f.getFecha_expedicion());
+            }
+        }
         try {
             System.out.println("*****************");
             FileOutputStream output = new FileOutputStream("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/aaa.docx");
