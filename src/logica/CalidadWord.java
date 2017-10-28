@@ -51,6 +51,7 @@ public class CalidadWord extends Reporte {
         integrarTabla(document,"Grupo sanguineo : ", this.getGrupo_sanguineo());
         integrarTabla(document, "Factor rh: ", this.getFactor_rh());
         integrarTabla(document, "Direccion: ", this.getDireccion());
+        integrarTabla(document, "Edad del padre: ", this.getEdad_padre());
        
         try {
             System.out.println("*****************");
