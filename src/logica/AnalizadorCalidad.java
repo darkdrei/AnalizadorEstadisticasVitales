@@ -89,9 +89,10 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             multiplicidad = new ArrayList<>();
             for (FilaEstadisticaVitalNacimientos n : r.getNacimientos()) {
                 //System.out.println(n.getArea_nacimiento()+"  "+n.getSitio_nacimiento());
-                if (n.getArea_nacimiento().equals("RURAL DISPERSO") && n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD")) {
+                if ((n.getArea_nacimiento().equals("EL DOMICILIO") || n.getArea_nacimiento().equals("RURAL DISPERSO")) && n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD")) {
                     con_area_nacimiento++;
                     area_nacimiento.add(n);
+                    System.out.println(n.getArea_nacimiento()+"  "+n.getSitio_nacimiento());
                 }
 
                 if (n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD") && !n.getParto_atendido_por().equals("M�DICO")) {
@@ -204,6 +205,9 @@ public class AnalizadorCalidad implements OperacionesCalidad {
                     multiplicidad.add(n);
                 }
             }
+            CalidadWord word = new CalidadWord(con_area_nacimiento, area_nacimiento, con_sitio_nacimiento, sitio_nacimiento, con_semana_gestacion, semana_gestacion, con_peso, peso, con_peso_tiempo_gestacion, peso_tiempo_gestacion, con_talla, talla, con_peso_tiempo_gestacion_talla, peso_tiempo_gestacion_talla, con_grupo_sanguineo, grupo_sanguineo, con_factor_rh, factor_rh, con_direccion, direccion, con_edad_padre, edad_padre, con_estado, estado, con_multiplicidad, multiplicidad);
+            word.setMunicipio(r.getMunicipio());
+            word.writeFile();
         }
     }
 
