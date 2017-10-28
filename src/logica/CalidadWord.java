@@ -36,7 +36,11 @@ public class CalidadWord extends Reporte {
         run.setFontFamily("Arial Black");
         run.setBold(true);
         run.addBreak();
-        System.out.println("Contador ne nacimientos " + this.getCon_area_nacimiento());
+        XWPFParagraph paragraph22 = document.createParagraph();
+        XWPFRun run22 = paragraph22.createRun();
+        run22.setText("Inconsistencias");
+        run22.addBreak();
+        System.out.println("Contador ne nacimientos " + this.getCon_sitio_nacimiento());
         if (this.getCon_area_nacimiento() > 0) {
             XWPFParagraph paragraph2 = document.createParagraph();
             XWPFRun run2 = paragraph2.createRun();
@@ -70,8 +74,41 @@ public class CalidadWord extends Reporte {
                 cell12.setText(f.getFecha_expedicion());
                 System.out.println("  " + f.getNumero_certificado() + "  " + f.getFecha_expedicion());
             }
+        }
+        if (this.getCon_sitio_nacimiento() > 0) {
+            XWPFParagraph paragraph2 = document.createParagraph();
+            XWPFRun run2 = paragraph2.createRun();
             run2.addBreak();
-            run2.addBreak();            
+            run2.addBreak();
+            run2.setText("Sitio de nacimiento : " + this.getArea_nacimiento().size());
+            XWPFTable table = document.createTable();
+            table.setInsideHBorder(XWPFTable.XWPFBorderType.THICK, 3, 2, "9965F3");
+            table.setCellMargins(10, 10, 0, 0);
+            XWPFTableRow row0 = table.getRow(0);
+            XWPFTableCell cell0 = row0.getCell(0);
+            XWPFParagraph par = cell0.addParagraph();
+            XWPFRun par_run = par.createRun();
+            par_run.setFontFamily("Arial Black");
+            par_run.setFontSize(13);
+            cell0.setColor("9965F3");
+            par_run.setText("Codigo del registro Nacimiento");
+            par_run.setBold(true);
+            XWPFTableCell cell1 = row0.createCell();
+            XWPFParagraph par1 = cell1.addParagraph();
+            XWPFRun par_run1 = par1.createRun();
+            par_run1.setFontFamily("Arial Black");
+            par_run1.setFontSize(13);
+            cell1.setColor("9965F3");
+            par_run1.setText("Fecha de entrega ");
+            par_run.setBold(true);
+            for (FilaEstadisticaVitalNacimientos f : this.getSitio_nacimiento()) {
+                XWPFTableRow row1 = table.createRow();
+                XWPFTableCell cell11 = row1.getCell(0);
+                cell11.setText(f.getNumero_certificado());
+                XWPFTableCell cell12 = row1.getCell(1);
+                cell12.setText(f.getFecha_expedicion());
+                System.out.println("  " + f.getNumero_certificado() + "  " + f.getFecha_expedicion());
+            }
         }
         try {
             System.out.println("*****************");
