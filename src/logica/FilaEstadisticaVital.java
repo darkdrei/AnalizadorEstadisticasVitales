@@ -47,6 +47,7 @@ public class FilaEstadisticaVital extends Fila{
     private String tipo_administradora;
     private String nombre_administradora;
     private String probable_manera_muerte;
+    private String expedido_por;
     private String relacion_muerte_parto;
     private String tipo_parto;
     private String multiplicidad;
@@ -173,8 +174,98 @@ public class FilaEstadisticaVital extends Fila{
         this.fecha_expedicion = fecha_expedicion;
         this.estado_certificado = estado_certificado;
     }
-    
-    
+
+    public FilaEstadisticaVital(String index, String numero_certificado, String departamento, String municipio, String area_de_defuncion, String inspeccion_corregimiento_o_caserio_defuncion, String sitio_defuncion, String codigo_institucion, String nombre_institucion, String tipo_defuncion, String fecha_defuncion, String hora_defuncion, String sexo_fallecido, String nombres_fallecido, String apellidos_fallecido, String tipo_documento_fallecido, String numero_documento_fallecido, String fecha_nacimiento_fallecido, String estado_conyugal_fallecido, String edad_fallecido, String nivel_educativo, String ultimo_year_aprovado, String ocupacion, String pertencia_etnica, String grupo_indigena, String pais_residencia, String departamento_residencia, String municipio_residencia, String localidad, String barrio, String direccion, String centro_poblado, String rural_disperso, String regimen_seguridad, String tipo_administradora, String nombre_administradora, String probable_manera_muerte, String expedido_por, String relacion_muerte_parto, String tipo_parto, String multiplicidad, String tiempo_gestacion, String peso_feto, String tipo_documento_madre, String numero_documento_madre, String nombre_madre, String apellidos_madre, String edad_madre, String hijos_nacidos_vivos, String hijos_nacidos_muertos, String estado_conyugal_madre, String nivel_educativo_madre, String ultimo_year_aprobado_madre, String embarazada_cuandno_fallecio, String embarazada_ultimas_6_semanas, String embarazada_ultimas_12_meses, String tipo_muerte_violenta, String descripcion_muerte_violenta, String departamento_muerte_violenta, String municipio_muerte_violenta, String direccion_muerte_violenta, String mecanismo_1, String mecanismo_2, String mecanismo_3, String mecanismo_4, String recibio_asistencia_medica, String causa_directa, String causa_antesedentes_b, String causa_antesedentes_c, String causa_antesedentes_d, String estado_patologico, String causa_basica, String muerte_sin_certificacion_medica, String nombres_y_apellidos_certificador, String numero_documento_certificador, String tipo_profesion, String registro_profesional, String departamento_expedicion, String municipio_expedicion, String fecha_expedicion, String estado_certificado) {
+        this.index = index;
+        this.numero_certificado = numero_certificado;
+        this.departamento = departamento;
+        this.municipio = municipio;
+        this.area_de_defuncion = area_de_defuncion;
+        this.inspeccion_corregimiento_o_caserio_defuncion = inspeccion_corregimiento_o_caserio_defuncion;
+        this.sitio_defuncion = sitio_defuncion;
+        this.codigo_institucion = codigo_institucion;
+        this.nombre_institucion = nombre_institucion;
+        this.tipo_defuncion = tipo_defuncion;
+        this.fecha_defuncion = fecha_defuncion;
+        this.hora_defuncion = hora_defuncion;
+        this.sexo_fallecido = sexo_fallecido;
+        this.nombres_fallecido = nombres_fallecido;
+        this.apellidos_fallecido = apellidos_fallecido;
+        this.tipo_documento_fallecido = tipo_documento_fallecido;
+        this.numero_documento_fallecido = numero_documento_fallecido;
+        this.fecha_nacimiento_fallecido = fecha_nacimiento_fallecido;
+        this.estado_conyugal_fallecido = estado_conyugal_fallecido;
+        this.edad_fallecido = edad_fallecido;
+        this.nivel_educativo = nivel_educativo;
+        this.ultimo_year_aprovado = ultimo_year_aprovado;
+        this.ocupacion = ocupacion;
+        this.pertencia_etnica = pertencia_etnica;
+        this.grupo_indigena = grupo_indigena;
+        this.pais_residencia = pais_residencia;
+        this.departamento_residencia = departamento_residencia;
+        this.municipio_residencia = municipio_residencia;
+        this.localidad = localidad;
+        this.barrio = barrio;
+        this.direccion = direccion;
+        this.centro_poblado = centro_poblado;
+        this.rural_disperso = rural_disperso;
+        this.regimen_seguridad = regimen_seguridad;
+        this.tipo_administradora = tipo_administradora;
+        this.nombre_administradora = nombre_administradora;
+        this.probable_manera_muerte = probable_manera_muerte;
+        this.expedido_por = expedido_por;
+        this.relacion_muerte_parto = relacion_muerte_parto;
+        this.tipo_parto = tipo_parto;
+        this.multiplicidad = multiplicidad;
+        this.tiempo_gestacion = tiempo_gestacion;
+        this.peso_feto = peso_feto;
+        this.tipo_documento_madre = tipo_documento_madre;
+        this.numero_documento_madre = numero_documento_madre;
+        this.nombre_madre = nombre_madre;
+        this.apellidos_madre = apellidos_madre;
+        this.edad_madre = edad_madre;
+        this.hijos_nacidos_vivos = hijos_nacidos_vivos;
+        this.hijos_nacidos_muertos = hijos_nacidos_muertos;
+        this.estado_conyugal_madre = estado_conyugal_madre;
+        this.nivel_educativo_madre = nivel_educativo_madre;
+        this.ultimo_year_aprobado_madre = ultimo_year_aprobado_madre;
+        this.embarazada_cuandno_fallecio = embarazada_cuandno_fallecio;
+        this.embarazada_ultimas_6_semanas = embarazada_ultimas_6_semanas;
+        this.embarazada_ultimas_12_meses = embarazada_ultimas_12_meses;
+        this.tipo_muerte_violenta = tipo_muerte_violenta;
+        this.descripcion_muerte_violenta = descripcion_muerte_violenta;
+        this.departamento_muerte_violenta = departamento_muerte_violenta;
+        this.municipio_muerte_violenta = municipio_muerte_violenta;
+        this.direccion_muerte_violenta = direccion_muerte_violenta;
+        this.mecanismo_1 = mecanismo_1;
+        this.mecanismo_2 = mecanismo_2;
+        this.mecanismo_3 = mecanismo_3;
+        this.mecanismo_4 = mecanismo_4;
+        this.recibio_asistencia_medica = recibio_asistencia_medica;
+        this.causa_directa = causa_directa;
+        this.causa_antesedentes_b = causa_antesedentes_b;
+        this.causa_antesedentes_c = causa_antesedentes_c;
+        this.causa_antesedentes_d = causa_antesedentes_d;
+        this.estado_patologico = estado_patologico;
+        this.causa_basica = causa_basica;
+        this.muerte_sin_certificacion_medica = muerte_sin_certificacion_medica;
+        this.nombres_y_apellidos_certificador = nombres_y_apellidos_certificador;
+        this.numero_documento_certificador = numero_documento_certificador;
+        this.tipo_profesion = tipo_profesion;
+        this.registro_profesional = registro_profesional;
+        this.departamento_expedicion = departamento_expedicion;
+        this.municipio_expedicion = municipio_expedicion;
+        this.fecha_expedicion = fecha_expedicion;
+        this.estado_certificado = estado_certificado;
+    }
+
+    public String getExpedido_por() {
+        return expedido_por;
+    }
+
+    public void setExpedido_por(String expedido_por) {
+        this.expedido_por = expedido_por;
+    }
 
     public String getIndex() {
         return index;
