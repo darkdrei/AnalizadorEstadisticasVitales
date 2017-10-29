@@ -404,4 +404,54 @@ public class Reporte implements ExportFile{
     public void setMunicipio(int municipio) {
         this.municipio = municipio;
     }
+
+    public ArrayList<EstadisticaVital_defuncion> getArea_defuncion() {
+        return area_defuncion;
+    }
+
+    public void setArea_defuncion(ArrayList<EstadisticaVital_defuncion> area_defuncion) {
+        this.area_defuncion = area_defuncion;
+    }
+
+    public ArrayList<EstadisticaVital_defuncion> getTipo_defuncion() {
+        return tipo_defuncion;
+    }
+
+    public void setTipo_defuncion(ArrayList<EstadisticaVital_defuncion> tipo_defuncion) {
+        this.tipo_defuncion = tipo_defuncion;
+    }
+
+    public ArrayList<EstadisticaVital_defuncion> getDireccion_defuncion() {
+        return direccion_defuncion;
+    }
+
+    public void setDireccion_defuncion(ArrayList<EstadisticaVital_defuncion> direccion_defuncion) {
+        this.direccion_defuncion = direccion_defuncion;
+    }
+
+    public ArrayList<EstadisticaVital_defuncion> getMujeres() {
+        return mujeres;
+    }
+
+    public void setMujeres(ArrayList<EstadisticaVital_defuncion> mujeres) {
+        this.mujeres = mujeres;
+    }
+
+    public ArrayList<EstadisticaVital_defuncion> getTipo_profesional() {
+        return tipo_profesional;
+    }
+
+    public void setTipo_profesional(ArrayList<EstadisticaVital_defuncion> tipo_profesional) {
+        this.tipo_profesional = tipo_profesional;
+    }
+
+    public ArrayList<EstadisticaVital_defuncion> getEstado_defuncion() {
+        return estado_defuncion;
+    }
+
+    public void setEstado_defuncion(ArrayList<EstadisticaVital_defuncion> estado_defuncion) {
+        this.estado_defuncion = estado_defuncion;
+    }
+    
+    
 }
