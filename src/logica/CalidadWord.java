@@ -76,7 +76,7 @@ public class CalidadWord extends Reporte {
         run2.addBreak();
         run2.addBreak();
         integrarTablaDefuncion(document, "Area de defunción", this.getArea_defuncion());
-        integrarTablaDefuncion(document, "Area de defunción", this.getArea_defuncion());
+        integrarTablaDefuncion(document, "Tipo defunción", this.getTipo_defuncion());
         integrarTablaDefuncion(document, "Area de defunción", this.getArea_defuncion());
         integrarTablaDefuncion(document, "Area de defunción", this.getArea_defuncion());
         integrarTablaDefuncion(document, "Area de defunción", this.getArea_defuncion());
