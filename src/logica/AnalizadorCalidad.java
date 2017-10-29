@@ -47,6 +47,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
     private ArrayList<EstadisticaVital_defuncion> direccion_defuncion = new ArrayList<>();
     private ArrayList<EstadisticaVital_defuncion> mujeres = new ArrayList<>();
     private ArrayList<EstadisticaVital_defuncion> tipo_profesional = new ArrayList<>();
+    private ArrayList<EstadisticaVital_defuncion> estado_defuncion =new ArrayList<>();
 
     public AnalizadorCalidad() {
         this.datos = new ContenedorRegistroMunicio();
@@ -181,7 +182,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
                     edad_padre.add(n);
                 }
 
-                if (!Pattern.matches("CONFITMADO", n.getEstado_certificado().toUpperCase())) {
+                if (!Pattern.matches("CONFIRMADO", n.getEstado_certificado().toUpperCase())) {
                     //System.err.println(n.getEdad_padre()+"  *");
                     con_estado++;
                     estado.add(n);
@@ -216,11 +217,11 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             direccion_defuncion = new ArrayList<>();
             mujeres = new ArrayList<>();
             tipo_profesional = new ArrayList<>();
+            estado_defuncion =new ArrayList<>();
             for (EstadisticaVital_defuncion d : r.getDefunciones()) {
                 if (((d.getArea_de_defuncion().equals("RURAL DISPERSO") || d.getArea_de_defuncion().equals("RURAL"))
                         && (d.getSitio_defuncion().equals("HOSPITAL") || d.getSitio_defuncion().equals("CL�NICA") || d.getSitio_defuncion().equals("HOSPITAL/CL�NICA")))
                         || (d.getArea_de_defuncion().equals("CABECERA MUNICIPAL") && (!d.getSitio_defuncion().equals("HOSPITAL") || !d.getSitio_defuncion().equals("CL�NICA") || !d.getSitio_defuncion().equals("HOSPITAL/CL�NICA")))) {
-                    System.out.println(d.getSitio_defuncion());
                     area_defuncion.add(d);
                 }
                 if (d.getTipo_defuncion().equals("FETAL") && (!d.getNombres_fallecido().equals("") || !d.getNumero_documento_fallecido().equals(""))) {
@@ -242,15 +243,24 @@ public class AnalizadorCalidad implements OperacionesCalidad {
                     }
                 }
                 if(d.getTipo_profesion().length()>0){
-                    System.out.println(d.getTipo_profesion()+"   "+d.get);
+                    
+                    if(!d.getExpedido_por().contains(d.getTipo_profesion()) ){
+                        tipo_profesional.add(d);
+                    }
                 }else{
                     tipo_profesional.add(d);
                 }
+                if (!Pattern.matches("CONFIRMADO", d.getEstado_certificado().toUpperCase())) {
+                    //System.err.println(n.getEdad_padre()+"  *");
+                    estado_defuncion.add(d);
+                    //System.out.println(n.getEstado_certificado());
+                }                
 
             }
-//            CalidadWord word = new CalidadWord(con_area_nacimiento, area_nacimiento, con_sitio_nacimiento, sitio_nacimiento, con_semana_gestacion, semana_gestacion, con_peso, peso, con_peso_tiempo_gestacion, peso_tiempo_gestacion, con_talla, talla, con_peso_tiempo_gestacion_talla, peso_tiempo_gestacion_talla, con_grupo_sanguineo, grupo_sanguineo, con_factor_rh, factor_rh, con_direccion, direccion, con_edad_padre, edad_padre, con_estado, estado, con_multiplicidad, multiplicidad);
-//            word.setMunicipio(r.getMunicipio());
-//            word.writeFile();
+            CalidadWord word = new CalidadWord(con_area_nacimiento, area_nacimiento, con_sitio_nacimiento, sitio_nacimiento, con_semana_gestacion, semana_gestacion, con_peso, peso, con_peso_tiempo_gestacion, peso_tiempo_gestacion, con_talla, talla, con_peso_tiempo_gestacion_talla, peso_tiempo_gestacion_talla, con_grupo_sanguineo, grupo_sanguineo, con_factor_rh, factor_rh, con_direccion, direccion, con_edad_padre, edad_padre, con_estado, estado, con_multiplicidad, multiplicidad,
+                                               area_defuncion,tipo_defuncion,direccion_defuncion,mujeres,tipo_profesional,estado_defuncion,r.getMunicipio());
+            word.setMunicipio(r.getMunicipio());
+            word.writeFile();
         }
     }
 
