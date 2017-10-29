@@ -39,6 +39,12 @@ public class Reporte implements ExportFile{
     private int con_multiplicidad = 0;
     private ArrayList<FilaEstadisticaVitalNacimientos> multiplicidad = new ArrayList<>();
     private int municipio;
+    private ArrayList<EstadisticaVital_defuncion> area_defuncion = new ArrayList<>();
+    private ArrayList<EstadisticaVital_defuncion> tipo_defuncion = new ArrayList<>();
+    private ArrayList<EstadisticaVital_defuncion> direccion_defuncion = new ArrayList<>();
+    private ArrayList<EstadisticaVital_defuncion> mujeres = new ArrayList<>();
+    private ArrayList<EstadisticaVital_defuncion> tipo_profesional = new ArrayList<>();
+    private ArrayList<EstadisticaVital_defuncion> estado_defuncion =new ArrayList<>();
 
     public Reporte(int con_area_nacimiento, 
             ArrayList<FilaEstadisticaVitalNacimientos> area_nacimiento,
@@ -65,7 +71,13 @@ public class Reporte implements ExportFile{
             int con_estado,
             ArrayList<FilaEstadisticaVitalNacimientos> estado,
             int con_multiplicidad,
-            ArrayList<FilaEstadisticaVitalNacimientos> multiplicidad)
+            ArrayList<FilaEstadisticaVitalNacimientos> multiplicidad,
+            ArrayList<EstadisticaVital_defuncion> area_defuncion,
+            ArrayList<EstadisticaVital_defuncion> tipo_defuncion,
+            ArrayList<EstadisticaVital_defuncion> direccion_defuncion,
+            ArrayList<EstadisticaVital_defuncion> mujeres,
+            ArrayList<EstadisticaVital_defuncion> tipo_profesional,
+            ArrayList<EstadisticaVital_defuncion> estado_defuncion)
     {
         this.con_area_nacimiento = con_area_nacimiento;
         this.area_nacimiento =area_nacimiento;
@@ -93,6 +105,12 @@ public class Reporte implements ExportFile{
         this.estado = estado;
         this.con_multiplicidad = con_multiplicidad;
         this.multiplicidad = multiplicidad;
+        this.area_defuncion = area_defuncion;
+        this.tipo_defuncion = tipo_defuncion;
+        this.direccion_defuncion = direccion_defuncion;
+        this.mujeres =mujeres;
+        this.tipo_profesional = tipo_profesional;
+        this.estado_defuncion = estado_defuncion;
     }
     
     public Reporte(int con_area_nacimiento, 
@@ -121,6 +139,12 @@ public class Reporte implements ExportFile{
             ArrayList<FilaEstadisticaVitalNacimientos> estado,
             int con_multiplicidad,
             ArrayList<FilaEstadisticaVitalNacimientos> multiplicidad,
+            ArrayList<EstadisticaVital_defuncion> area_defuncion,
+            ArrayList<EstadisticaVital_defuncion> tipo_defuncion,
+            ArrayList<EstadisticaVital_defuncion> direccion_defuncion,
+            ArrayList<EstadisticaVital_defuncion> mujeres,
+            ArrayList<EstadisticaVital_defuncion> tipo_profesional,
+            ArrayList<EstadisticaVital_defuncion> estado_defuncion,
             int municipio)
     {
         this.con_area_nacimiento = con_area_nacimiento;
@@ -150,6 +174,12 @@ public class Reporte implements ExportFile{
         this.con_multiplicidad = con_multiplicidad;
         this.multiplicidad = multiplicidad;
         this.municipio = municipio;
+        this.area_defuncion = area_defuncion;
+        this.tipo_defuncion = tipo_defuncion;
+        this.direccion_defuncion = direccion_defuncion;
+        this.mujeres =mujeres;
+        this.tipo_profesional = tipo_profesional;
+        this.estado_defuncion = estado_defuncion;
     }
     
     
