@@ -131,7 +131,10 @@ public class ArchivoEstadisticaVitalDefunciones extends Excel {
                                     shee.getCell(75, i).getContents(),
                                     shee.getCell(76, i).getContents(),
                                     shee.getCell(77, i).getContents(),
-                                    shee.getCell(78, i).getContents()));
+                                    shee.getCell(78, i).getContents(),
+                                    shee.getCell(79, i).getContents(),
+                                    shee.getCell(80, i).getContents(),
+                                    shee.getCell(81, i).getContents()));
                 }
             }
         }
