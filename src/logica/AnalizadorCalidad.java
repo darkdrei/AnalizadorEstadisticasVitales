@@ -219,10 +219,11 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             tipo_profesional = new ArrayList<>();
             estado_defuncion =new ArrayList<>();
             for (EstadisticaVital_defuncion d : r.getDefunciones()) {
-                if (((d.getArea_de_defuncion().equals("RURAL DISPERSO") || d.getArea_de_defuncion().equals("RURAL"))
-                        && (d.getSitio_defuncion().equals("HOSPITAL") || d.getSitio_defuncion().equals("CL�NICA") || d.getSitio_defuncion().equals("HOSPITAL/CL�NICA")))
-                        || (d.getArea_de_defuncion().equals("CABECERA MUNICIPAL") && (!d.getSitio_defuncion().equals("HOSPITAL") || !d.getSitio_defuncion().equals("CL�NICA") || !d.getSitio_defuncion().equals("HOSPITAL/CL�NICA")))) {
+                //((d.getArea_de_defuncion().equals("RURAL DISPERSO"))&& (d.getSitio_defuncion().equals("HOSPITAL") || d.getSitio_defuncion().equals("CL�NICA") || d.getSitio_defuncion().equals("HOSPITAL/CL�NICA")))
+               
+                if (((d.getArea_de_defuncion().equals("RURAL DISPERSO"))&& (d.getSitio_defuncion().equals("HOSPITAL") || d.getSitio_defuncion().equals("CL�NICA") || d.getSitio_defuncion().equals("HOSPITAL/CL�NICA")))||(d.getArea_de_defuncion().equals("CABECERA MUNICIPAL") && (!d.getSitio_defuncion().contains("HOSPITAL") || !d.getSitio_defuncion().contains("CL�NICA") || !d.getSitio_defuncion().contains("HOSPITAL/CL�NICA")))) {
                     area_defuncion.add(d);
+                    System.out.println(""+d.getArea_de_defuncion()+"   "+d.getSitio_defuncion());
                 }
                 if (d.getTipo_defuncion().equals("FETAL") && (!d.getNombres_fallecido().equals("") || !d.getNumero_documento_fallecido().equals(""))) {
                     tipo_defuncion.add(d);
