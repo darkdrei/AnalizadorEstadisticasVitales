@@ -79,7 +79,8 @@ public class CalidadWord extends Reporte {
         integrarTablaDefuncion(document, "Tipo defunción", this.getTipo_defuncion());
         integrarTablaDefuncion(document, "Dirección de defunción", this.getDireccion_defuncion());
         integrarTablaDefuncion(document, "Mujeres en fertelidad antes de defunción", this.getMujeres());
-        integrarTablaDefuncion(document, "Tipo de profesión que certifica0", this.getTipo_profesional());
+        integrarTablaDefuncion(document, "Tipo de profesión que certificado", this.getTipo_profesional());
+        integrarTablaDefuncion(document, "Estado de Certificacion", this.getEstado_defuncion());
         try {
             System.out.println("*****************");
             FileOutputStream output = new FileOutputStream("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/aaa.docx");
