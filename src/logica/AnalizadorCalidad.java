@@ -46,6 +46,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
     private ArrayList<EstadisticaVital_defuncion> tipo_defuncion = new ArrayList<>();
     private ArrayList<EstadisticaVital_defuncion> direccion_defuncion = new ArrayList<>();
     private ArrayList<EstadisticaVital_defuncion> mujeres = new ArrayList<>();
+    private ArrayList<EstadisticaVital_defuncion> tipo_profesional = new ArrayList<>();
 
     public AnalizadorCalidad() {
         this.datos = new ContenedorRegistroMunicio();
@@ -214,6 +215,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             tipo_defuncion = new ArrayList<>();
             direccion_defuncion = new ArrayList<>();
             mujeres = new ArrayList<>();
+            tipo_profesional = new ArrayList<>();
             for (EstadisticaVital_defuncion d : r.getDefunciones()) {
                 if (((d.getArea_de_defuncion().equals("RURAL DISPERSO") || d.getArea_de_defuncion().equals("RURAL"))
                         && (d.getSitio_defuncion().equals("HOSPITAL") || d.getSitio_defuncion().equals("CL�NICA") || d.getSitio_defuncion().equals("HOSPITAL/CL�NICA")))
@@ -238,6 +240,11 @@ public class AnalizadorCalidad implements OperacionesCalidad {
                             mujeres.add(d);
                         }
                     }
+                }
+                if(d.getTipo_profesion().length()>0){
+                    System.out.println(d.getTipo_profesion()+"   "+d.get);
+                }else{
+                    tipo_profesional.add(d);
                 }
 
             }
