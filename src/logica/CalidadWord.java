@@ -75,6 +75,11 @@ public class CalidadWord extends Reporte {
         run2.setBold(true);
         run2.addBreak();
         run2.addBreak();
+        integrarTablaDefuncion(document, "Area de defunción", this.getArea_defuncion());
+        integrarTablaDefuncion(document, "Area de defunción", this.getArea_defuncion());
+        integrarTablaDefuncion(document, "Area de defunción", this.getArea_defuncion());
+        integrarTablaDefuncion(document, "Area de defunción", this.getArea_defuncion());
+        integrarTablaDefuncion(document, "Area de defunción", this.getArea_defuncion());
         try {
             System.out.println("*****************");
             FileOutputStream output = new FileOutputStream("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/aaa.docx");
