@@ -67,6 +67,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
 
     @Override
     public void analizarCalidaDeLaInformacion() {
+        String hospital ="";
         for (RegistrosMunicipio r : this.getDatos().getRegistros()) {
             con_area_nacimiento = 0;
             area_nacimiento = new ArrayList<>();
@@ -94,7 +95,13 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             estado = new ArrayList<>();
             con_multiplicidad = 0;
             multiplicidad = new ArrayList<>();
+            ArrayList<String> instituciones_de_salud_nacimiento = new ArrayList<>();
+            ArrayList<String> instituciones_de_salud_defunciones = new ArrayList<>();
             for (FilaEstadisticaVitalNacimientos n : r.getNacimientos()) {
+                if(!n.getNombre_institucion().equals(hospital)){
+                    hospital = n.getNombre_institucion();
+                    instituciones_de_salud_nacimiento.add(hospital);
+                }
                 //System.out.println(n.getArea_nacimiento()+"  "+n.getSitio_nacimiento());
                 if ((n.getArea_nacimiento().equals("EL DOMICILIO") || n.getArea_nacimiento().equals("RURAL DISPERSO")) && n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD")) {
                     con_area_nacimiento++;
@@ -218,9 +225,13 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             mujeres = new ArrayList<>();
             tipo_profesional = new ArrayList<>();
             estado_defuncion =new ArrayList<>();
+            hospital="";
             for (EstadisticaVital_defuncion d : r.getDefunciones()) {
                 //((d.getArea_de_defuncion().equals("RURAL DISPERSO"))&& (d.getSitio_defuncion().equals("HOSPITAL") || d.getSitio_defuncion().equals("CL�NICA") || d.getSitio_defuncion().equals("HOSPITAL/CL�NICA")))
-               
+               if(!d.getNombre_institucion().equals(hospital)){
+                    hospital = d.getNombre_institucion();
+                    instituciones_de_salud_nacimiento.add(hospital);
+                }
                 if (((d.getArea_de_defuncion().equals("RURAL DISPERSO"))&& (d.getSitio_defuncion().equals("HOSPITAL") || d.getSitio_defuncion().equals("CL�NICA") || d.getSitio_defuncion().equals("HOSPITAL/CL�NICA")))||(d.getArea_de_defuncion().equals("CABECERA MUNICIPAL") && (!d.getSitio_defuncion().contains("HOSPITAL") || !d.getSitio_defuncion().contains("CL�NICA") || !d.getSitio_defuncion().contains("HOSPITAL/CL�NICA")))) {
                     area_defuncion.add(d);
                     System.out.println(""+d.getArea_de_defuncion()+"   "+d.getSitio_defuncion());
