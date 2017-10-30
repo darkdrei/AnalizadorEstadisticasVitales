@@ -45,6 +45,11 @@ public class Reporte implements ExportFile{
     private ArrayList<EstadisticaVital_defuncion> mujeres = new ArrayList<>();
     private ArrayList<EstadisticaVital_defuncion> tipo_profesional = new ArrayList<>();
     private ArrayList<EstadisticaVital_defuncion> estado_defuncion =new ArrayList<>();
+    private float size=0;
+    private ArrayList<String> instituciones_de_salud_nacimiento = new ArrayList<>();
+    private ArrayList<String> instituciones_de_salud_defunciones = new ArrayList<>();
+    private int total_nacimientos=0;
+    private int total_defunciones=0;
 
     public Reporte(int con_area_nacimiento, 
             ArrayList<FilaEstadisticaVitalNacimientos> area_nacimiento,
@@ -181,8 +186,14 @@ public class Reporte implements ExportFile{
         this.tipo_profesional = tipo_profesional;
         this.estado_defuncion = estado_defuncion;
     }
-    
-    
+
+    public float getSize() {
+        return size;
+    }
+
+    public void setSize(float size) {
+        this.size = size;
+    }
     
     @Override
     public void writeFile() {
@@ -452,6 +463,38 @@ public class Reporte implements ExportFile{
     public void setEstado_defuncion(ArrayList<EstadisticaVital_defuncion> estado_defuncion) {
         this.estado_defuncion = estado_defuncion;
     }
-    
+
+    public ArrayList<String> getInstituciones_de_salud_nacimiento() {
+        return instituciones_de_salud_nacimiento;
+    }
+
+    public void setInstituciones_de_salud_nacimiento(ArrayList<String> instituciones_de_salud_nacimiento) {
+        this.instituciones_de_salud_nacimiento = instituciones_de_salud_nacimiento;
+    }
+
+    public ArrayList<String> getInstituciones_de_salud_defunciones() {
+        return instituciones_de_salud_defunciones;
+    }
+
+    public void setInstituciones_de_salud_defunciones(ArrayList<String> instituciones_de_salud_defunciones) {
+        this.instituciones_de_salud_defunciones = instituciones_de_salud_defunciones;
+    }
+
+    public int getTotal_nacimientos() {
+        return total_nacimientos;
+    }
+
+    public void setTotal_nacimientos(int total_nacimientos) {
+        this.total_nacimientos = total_nacimientos;
+    }
+
+    public int getTotal_defunciones() {
+        return total_defunciones;
+    }
+
+    public void setTotal_defunciones(int total_defunciones) {
+        this.total_defunciones = total_defunciones;
+    }
+
     
 }
