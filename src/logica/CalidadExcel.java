@@ -5,7 +5,15 @@
  */
 package logica;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+import jxl.write.WritableSheet;
 
 /**
  *
@@ -21,7 +29,23 @@ public class CalidadExcel extends Reporte{
     
     @Override
     public void writeFile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            FileCopy c = new FileCopy();
+            ManejadorMunicipio m = new ManejadorMunicipio();
+            String path = "/home/dark/proyectos/AnalizadorEstadisticasVitales/data/"+m.getMunicipio(this.getMunicipio())+".xls";
+            c.fileCopy("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/calidad2.xls",path);
+            File file = new File(path);
+            Workbook work_book = Workbook.getWorkbook(file);
+            WritableSheet excelSheet = null;
+            Sheet shee = work_book.getSheet(0);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(CalidadExcel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BiffException ex) {
+            Logger.getLogger(CalidadExcel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
     }
     
 }
