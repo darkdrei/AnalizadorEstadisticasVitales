@@ -11,7 +11,9 @@ import java.util.ArrayList;
  *
  * @author dark
  */
-public class Reporte implements ExportFile{
+public class Reporte implements ExportFile {
+    private float registros_oportunos_nacimientos = 0;
+    private float registros_oportunos_defunciones = 0;
     private int con_area_nacimiento = 0;
     private ArrayList<FilaEstadisticaVitalNacimientos> area_nacimiento = new ArrayList<>();
     private int con_sitio_nacimiento = 0;
@@ -44,14 +46,14 @@ public class Reporte implements ExportFile{
     private ArrayList<EstadisticaVital_defuncion> direccion_defuncion = new ArrayList<>();
     private ArrayList<EstadisticaVital_defuncion> mujeres = new ArrayList<>();
     private ArrayList<EstadisticaVital_defuncion> tipo_profesional = new ArrayList<>();
-    private ArrayList<EstadisticaVital_defuncion> estado_defuncion =new ArrayList<>();
-    private float size=0;
+    private ArrayList<EstadisticaVital_defuncion> estado_defuncion = new ArrayList<>();
+    private float size = 0;
     private ArrayList<String> instituciones_de_salud_nacimiento = new ArrayList<>();
     private ArrayList<String> instituciones_de_salud_defunciones = new ArrayList<>();
-    private int total_nacimientos=0;
-    private int total_defunciones=0;
+    private int total_nacimientos = 0;
+    private int total_defunciones = 0;
 
-    public Reporte(int con_area_nacimiento, 
+    public Reporte(int con_area_nacimiento,
             ArrayList<FilaEstadisticaVitalNacimientos> area_nacimiento,
             int con_sitio_nacimiento,
             ArrayList<FilaEstadisticaVitalNacimientos> sitio_nacimiento,
@@ -82,15 +84,14 @@ public class Reporte implements ExportFile{
             ArrayList<EstadisticaVital_defuncion> direccion_defuncion,
             ArrayList<EstadisticaVital_defuncion> mujeres,
             ArrayList<EstadisticaVital_defuncion> tipo_profesional,
-            ArrayList<EstadisticaVital_defuncion> estado_defuncion)
-    {
+            ArrayList<EstadisticaVital_defuncion> estado_defuncion) {
         this.con_area_nacimiento = con_area_nacimiento;
-        this.area_nacimiento =area_nacimiento;
+        this.area_nacimiento = area_nacimiento;
         this.con_sitio_nacimiento = con_sitio_nacimiento;
-        this.sitio_nacimiento =sitio_nacimiento;
+        this.sitio_nacimiento = sitio_nacimiento;
         this.con_semana_gestacion = con_semana_gestacion;
         this.semana_gestacion = semana_gestacion;
-        this.con_peso=con_peso;
+        this.con_peso = con_peso;
         this.peso = peso;
         this.con_peso_tiempo_gestacion = con_peso_tiempo_gestacion;
         this.peso_tiempo_gestacion = peso_tiempo_gestacion;
@@ -104,21 +105,21 @@ public class Reporte implements ExportFile{
         this.factor_rh = factor_rh;
         this.con_direccion = con_direccion;
         this.direccion = direccion;
-        this.con_edad_padre=con_edad_padre;
+        this.con_edad_padre = con_edad_padre;
         this.edad_padre = edad_padre;
-        this.con_estado =  con_estado;
+        this.con_estado = con_estado;
         this.estado = estado;
         this.con_multiplicidad = con_multiplicidad;
         this.multiplicidad = multiplicidad;
         this.area_defuncion = area_defuncion;
         this.tipo_defuncion = tipo_defuncion;
         this.direccion_defuncion = direccion_defuncion;
-        this.mujeres =mujeres;
+        this.mujeres = mujeres;
         this.tipo_profesional = tipo_profesional;
         this.estado_defuncion = estado_defuncion;
     }
-    
-    public Reporte(int con_area_nacimiento, 
+
+    public Reporte(int con_area_nacimiento,
             ArrayList<FilaEstadisticaVitalNacimientos> area_nacimiento,
             int con_sitio_nacimiento,
             ArrayList<FilaEstadisticaVitalNacimientos> sitio_nacimiento,
@@ -150,15 +151,14 @@ public class Reporte implements ExportFile{
             ArrayList<EstadisticaVital_defuncion> mujeres,
             ArrayList<EstadisticaVital_defuncion> tipo_profesional,
             ArrayList<EstadisticaVital_defuncion> estado_defuncion,
-            int municipio)
-    {
+            int municipio) {
         this.con_area_nacimiento = con_area_nacimiento;
-        this.area_nacimiento =area_nacimiento;
+        this.area_nacimiento = area_nacimiento;
         this.con_sitio_nacimiento = con_sitio_nacimiento;
-        this.sitio_nacimiento =sitio_nacimiento;
+        this.sitio_nacimiento = sitio_nacimiento;
         this.con_semana_gestacion = con_semana_gestacion;
         this.semana_gestacion = semana_gestacion;
-        this.con_peso=con_peso;
+        this.con_peso = con_peso;
         this.peso = peso;
         this.con_peso_tiempo_gestacion = con_peso_tiempo_gestacion;
         this.peso_tiempo_gestacion = peso_tiempo_gestacion;
@@ -172,9 +172,9 @@ public class Reporte implements ExportFile{
         this.factor_rh = factor_rh;
         this.con_direccion = con_direccion;
         this.direccion = direccion;
-        this.con_edad_padre=con_edad_padre;
+        this.con_edad_padre = con_edad_padre;
         this.edad_padre = edad_padre;
-        this.con_estado =  con_estado;
+        this.con_estado = con_estado;
         this.estado = estado;
         this.con_multiplicidad = con_multiplicidad;
         this.multiplicidad = multiplicidad;
@@ -182,7 +182,7 @@ public class Reporte implements ExportFile{
         this.area_defuncion = area_defuncion;
         this.tipo_defuncion = tipo_defuncion;
         this.direccion_defuncion = direccion_defuncion;
-        this.mujeres =mujeres;
+        this.mujeres = mujeres;
         this.tipo_profesional = tipo_profesional;
         this.estado_defuncion = estado_defuncion;
     }
@@ -194,7 +194,7 @@ public class Reporte implements ExportFile{
     public void setSize(float size) {
         this.size = size;
     }
-    
+
     @Override
     public void writeFile() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -215,6 +215,23 @@ public class Reporte implements ExportFile{
     public void setArea_nacimiento(ArrayList<FilaEstadisticaVitalNacimientos> area_nacimiento) {
         this.area_nacimiento = area_nacimiento;
     }
+
+    public float getRegistros_oportunos_nacimientos() {
+        return registros_oportunos_nacimientos;
+    }
+
+    public void setRegistros_oportunos_nacimientos(float registros_oportunos_nacimientos) {
+        this.registros_oportunos_nacimientos = registros_oportunos_nacimientos;
+    }
+
+    public float getRegistros_oportunos_defunciones() {
+        return registros_oportunos_defunciones;
+    }
+
+    public void setRegistros_oportunos_defunciones(float registros_oportunos_defunciones) {
+        this.registros_oportunos_defunciones = registros_oportunos_defunciones;
+    }
+    
 
     public int getCon_sitio_nacimiento() {
         return con_sitio_nacimiento;
@@ -496,5 +513,4 @@ public class Reporte implements ExportFile{
         this.total_defunciones = total_defunciones;
     }
 
-    
 }
