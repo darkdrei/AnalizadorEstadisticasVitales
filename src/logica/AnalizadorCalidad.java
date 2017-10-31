@@ -106,7 +106,6 @@ public class AnalizadorCalidad implements OperacionesCalidad {
                 if ((n.getArea_nacimiento().equals("EL DOMICILIO") || n.getArea_nacimiento().equals("RURAL DISPERSO")) && n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD")) {
                     con_area_nacimiento++;
                     area_nacimiento.add(n);
-                    System.out.println(n.getArea_nacimiento() + "  " + n.getSitio_nacimiento());
                 }
 
                 if (n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD") && !n.getParto_atendido_por().equals("M�DICO")) {
@@ -234,7 +233,6 @@ public class AnalizadorCalidad implements OperacionesCalidad {
                 }
                 if (((d.getArea_de_defuncion().equals("RURAL DISPERSO"))&& (d.getSitio_defuncion().equals("HOSPITAL") || d.getSitio_defuncion().equals("CL�NICA") || d.getSitio_defuncion().equals("HOSPITAL/CL�NICA")))||(d.getArea_de_defuncion().equals("CABECERA MUNICIPAL") && (!d.getSitio_defuncion().contains("HOSPITAL") || !d.getSitio_defuncion().contains("CL�NICA") || !d.getSitio_defuncion().contains("HOSPITAL/CL�NICA")))) {
                     area_defuncion.add(d);
-                    System.out.println(""+d.getArea_de_defuncion()+"   "+d.getSitio_defuncion());
                 }
                 if (d.getTipo_defuncion().equals("FETAL") && (!d.getNombres_fallecido().equals("") || !d.getNumero_documento_fallecido().equals(""))) {
                     tipo_defuncion.add(d);
@@ -284,6 +282,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
     public void analizarCalidaDeLaInformacion(Object data) {
         String hospital ="";
         for (RegistrosMunicipio r : this.getDatos().getRegistros()) {
+            float con_oporunidad =0;
             con_area_nacimiento = 0;
             area_nacimiento = new ArrayList<>();
             con_sitio_nacimiento = 0;
@@ -310,9 +309,16 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             estado = new ArrayList<>();
             con_multiplicidad = 0;
             multiplicidad = new ArrayList<>();
+            System.out.println("###########################33333");
             ArrayList<String> instituciones_de_salud_nacimiento = new ArrayList<>();
             ArrayList<String> instituciones_de_salud_defunciones = new ArrayList<>();
+            stop:
             for (FilaEstadisticaVitalNacimientos n : r.getNacimientos()) {
+                if(n.getFecha_nacimiento().contains(n.getFecha_expedicion()) || n.getFecha_expedicion().contains(n.getFecha_nacimiento())){
+                    //System.out.println(" --- "+n.getFecha_nacimiento()+"   "+n.getFecha_expedicion());
+                    System.out.println(n.getFecha_nacimiento());
+                    con_oporunidad++;
+                }
                 if(!n.getNombre_institucion().equals(hospital)){
                     hospital = n.getNombre_institucion();
                     instituciones_de_salud_nacimiento.add(hospital);
@@ -321,7 +327,6 @@ public class AnalizadorCalidad implements OperacionesCalidad {
                 if ((n.getArea_nacimiento().equals("EL DOMICILIO") || n.getArea_nacimiento().equals("RURAL DISPERSO")) && n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD")) {
                     con_area_nacimiento++;
                     area_nacimiento.add(n);
-                    System.out.println(n.getArea_nacimiento() + "  " + n.getSitio_nacimiento());
                 }
 
                 if (n.getSitio_nacimiento().equals("INSTITUCI�N DE SALUD") && !n.getParto_atendido_por().equals("M�DICO")) {
@@ -433,6 +438,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
                     con_multiplicidad++;
                     multiplicidad.add(n);
                 }
+                
             }
             area_defuncion = new ArrayList<>();
             tipo_defuncion = new ArrayList<>();
@@ -441,7 +447,13 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             tipo_profesional = new ArrayList<>();
             estado_defuncion =new ArrayList<>();
             hospital="";
+            float oportunidad_defuncion=0;
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             for (EstadisticaVital_defuncion d : r.getDefunciones()) {
+                if(d.getFecha_defuncion().contains(d.getFecha_expedicion())){
+                    oportunidad_defuncion++;      
+                    System.out.println(" "+d.getFecha_defuncion()+"  "+d.getFecha_expedicion());
+                }
                 //((d.getArea_de_defuncion().equals("RURAL DISPERSO"))&& (d.getSitio_defuncion().equals("HOSPITAL") || d.getSitio_defuncion().equals("CL�NICA") || d.getSitio_defuncion().equals("HOSPITAL/CL�NICA")))
                if(!d.getNombre_institucion().equals(hospital)){
                     hospital = d.getNombre_institucion();
@@ -449,7 +461,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
                 }
                 if (((d.getArea_de_defuncion().equals("RURAL DISPERSO"))&& (d.getSitio_defuncion().equals("HOSPITAL") || d.getSitio_defuncion().equals("CL�NICA") || d.getSitio_defuncion().equals("HOSPITAL/CL�NICA")))||(d.getArea_de_defuncion().equals("CABECERA MUNICIPAL") && (!d.getSitio_defuncion().contains("HOSPITAL") || !d.getSitio_defuncion().contains("CL�NICA") || !d.getSitio_defuncion().contains("HOSPITAL/CL�NICA")))) {
                     area_defuncion.add(d);
-                    System.out.println(""+d.getArea_de_defuncion()+"   "+d.getSitio_defuncion());
+                    //System.out.println(""+d.getArea_de_defuncion()+"   "+d.getSitio_defuncion());
                 }
                 if (d.getTipo_defuncion().equals("FETAL") && (!d.getNombres_fallecido().equals("") || !d.getNumero_documento_fallecido().equals(""))) {
                     tipo_defuncion.add(d);
@@ -491,6 +503,9 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             word.setInstituciones_de_salud_defunciones(instituciones_de_salud_defunciones);
             word.setTotal_nacimientos(r.getNacimientos().size());
             word.setTotal_defunciones(r.getDefunciones().size());
+            word.setRegistros_oportunos_nacimientos(con_oporunidad);
+            word.setRegistros_oportunos_defunciones(oportunidad_defuncion);
+            System.out.println("*********** "+con_oporunidad+"   "+oportunidad_defuncion);
             word.writeFile();
         }
     }
