@@ -32,8 +32,36 @@ public class CalidadExcel extends Reporte {
         String path = "/home/dark/proyectos/AnalizadorEstadisticasVitales/data/" + m.getMunicipio(this.getMunicipio()) + ".xlsx";
         c.fileCopy("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/calidad.xlsx", path);
         File file = new File(path);
-        
-
+        //OPRTUNIDAD 
+        double oportunidad_nacimiento = this.getRegistros_oportunos_nacimientos()*100.0/this.getTotal_nacimientos();
+        double oportunidad_defunciones = this.getRegistros_oportunos_defunciones()*100.0/this.getTotal_defunciones();
+        //CALIDAD
+        float tem_mayor_nac=0,tem_may_def=0;
+        if(this.getArea_nacimiento().size() > tem_mayor_nac){
+            tem_mayor_nac = this.getArea_nacimiento().size();
+        }else if(this.getSitio_nacimiento().size() > tem_mayor_nac){
+            tem_mayor_nac = this.getSitio_nacimiento().size();
+        }else if(this.getSemana_gestacion().size() > tem_mayor_nac){
+            tem_mayor_nac = this.getSemana_gestacion().size();
+        }else if(this.getPeso().size() > tem_mayor_nac){
+            tem_mayor_nac = this.getPeso().size();
+        }else if(this.getPeso_tiempo_gestacion().size() > tem_mayor_nac){
+            tem_mayor_nac = this.getPeso_tiempo_gestacion().size();
+        }else if(this.getPeso_tiempo_gestacion_talla().size() > tem_mayor_nac){
+            tem_mayor_nac = this.getPeso_tiempo_gestacion_talla().size();
+        }else if(this.getGrupo_sanguineo().size() > tem_mayor_nac){
+            tem_mayor_nac = this.getGrupo_sanguineo().size();
+        }else if(this.getFactor_rh().size() > tem_mayor_nac){
+            tem_mayor_nac = this.getFactor_rh().size();
+        }else if(this.getDireccion().size() > tem_mayor_nac){
+            tem_mayor_nac = this.getDireccion().size();
+        }else if(this.getEdad_padre().size() > tem_mayor_nac){
+            tem_mayor_nac = this.getEdad_padre().size();
+        }else if(this.getEstado().size() > tem_mayor_nac){
+            tem_mayor_nac = this.getEstado().size();
+        }else if(this.getMultiplicidad().size() > tem_mayor_nac){
+            tem_mayor_nac = this.getMultiplicidad().size();
+        }
     }
 
 }
