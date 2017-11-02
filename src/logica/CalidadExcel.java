@@ -62,6 +62,9 @@ public class CalidadExcel extends Reporte {
         }else if(this.getMultiplicidad().size() > tem_mayor_nac){
             tem_mayor_nac = this.getMultiplicidad().size();
         }
+        if(tem_may_def > this.getArea_defuncion().size()){
+            tem_may_def = this.getArea_defuncion().size();
+        }
     }
 
 }
