@@ -68,6 +68,8 @@ public class CalidadExcel extends Reporte {
             tem_may_def = this.getTipo_defuncion().size();
         }else if(tem_may_def > this.getDireccion_defuncion().size()){
             tem_may_def = this.getDireccion_defuncion().size();
+        }else if(tem_may_def > this.getMujeres().size()){
+            tem_may_def = this.getMujeres().size();
         }
     }
 
