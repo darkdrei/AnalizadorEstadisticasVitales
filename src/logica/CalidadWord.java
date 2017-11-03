@@ -83,7 +83,7 @@ public class CalidadWord extends Reporte {
         integrarTablaDefuncion(document, "Estado de Certificacion", this.getEstado_defuncion());
         try {
             System.out.println("*****************");
-            FileOutputStream output = new FileOutputStream("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/aaa.docx");
+            FileOutputStream output = new FileOutputStream(this.getPath()+"//"+muni.getMunicipio(this.getMunicipio())+".docx");
             document.write(output);
             output.close();
         } catch (Exception e) {
