@@ -30,6 +30,8 @@ public class test {
      */
     public static void main(String[] args) {
         System.out.println(20*100/80);
+            String basePath = new File("").getAbsolutePath();
+            System.out.println(basePath);
 //        InputStream excelFile = null;
 //        try {
 //            // TODO code application logic here
