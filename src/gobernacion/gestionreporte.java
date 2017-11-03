@@ -281,8 +281,6 @@ public class gestionreporte extends javax.swing.JFrame {
                 System.out.println("entro");
                 //f.showSaveDialog(null);
                 a.generarWord(f.getSelectedFile().getPath());
-                System.out.println(f.getCurrentDirectory());
-                System.out.println(f.getSelectedFile());
             } else {
                 JOptionPane.showMessageDialog(this, "Guardar Informe", "Debe seleccionar un directorio.", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -357,23 +355,7 @@ public class gestionreporte extends javax.swing.JFrame {
 
     private void btnGenerarReporte2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporte2ActionPerformed
         // TODO add your handling code here:
-        if (a.getReporte().size() > 0) {
-            JFileChooser f = new JFileChooser();
-            f.setDialogTitle("Guardar Informe");
-            f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            int op = f.showOpenDialog(f);
-            if (op == JFileChooser.APPROVE_OPTION) {
-                System.out.println("entro");
-                //f.showSaveDialog(null);
-                a.generarWord(f.getSelectedFile().getPath());
-                System.out.println(f.getCurrentDirectory());
-                System.out.println(f.getSelectedFile());
-            } else {
-                JOptionPane.showMessageDialog(this, "Guardar Informe", "Debe seleccionar un directorio.", JOptionPane.INFORMATION_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Guardar Informe", "Debe realizar el analisis.", JOptionPane.INFORMATION_MESSAGE);
-        }
+        
     }//GEN-LAST:event_btnGenerarReporte2ActionPerformed
 
     /**
