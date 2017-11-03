@@ -38,8 +38,14 @@ public class CalidadExcel extends Reporte {
         try {
             FileCopy c = new FileCopy();
             ManejadorMunicipio m = new ManejadorMunicipio();
-            String path = "/home/dark/proyectos/AnalizadorEstadisticasVitales/data/" + m.getMunicipio(this.getMunicipio()) + ".xlsx";
-            c.fileCopy("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/calidad.xlsx", path);
+            String path = "";
+            if (System.getProperty("os.name").contains("Linux")) {
+                path = this.getPath() + "/" + m.getMunicipio(this.getMunicipio()) + ".xlsx";
+                c.fileCopy("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/calidad.xlsx", path);
+            }else{
+                path = this.getPath() + "\\" + m.getMunicipio(this.getMunicipio()) + ".xlsx";
+                c.fileCopy(this.getPath()+"\\data\\calidad.xlsx", path);
+            }
             File file = new File(path);
             //OPRTUNIDAD
             double oportunidad_nacimiento = this.getRegistros_oportunos_nacimientos() * 100.0 / this.getTotal_nacimientos();
@@ -91,7 +97,7 @@ public class CalidadExcel extends Reporte {
             XSSFCell cell;
             int pos = 4;
             boolean res = true;
-            System.out.println("**************   "+sheet.getRow(4).getCell(2).toString().length()+"   *****************");
+            System.out.println("**************   " + sheet.getRow(4).getCell(2).toString().length() + "   *****************");
             do {
                 if (sheet.getRow(4).getCell(2).toString().length() == 0) {
                     res = false;
@@ -99,27 +105,27 @@ public class CalidadExcel extends Reporte {
                     pos++;
                 }
             } while (res);
-            String hosp ="";
+            String hosp = "";
             cli:
-            for(String s: this.getInstituciones_de_salud_nacimiento()){
-                if(s.contains("HOSPITAL/CL�NICA")||s.contains("HOSPITAL")){
+            for (String s : this.getInstituciones_de_salud_nacimiento()) {
+                if (s.contains("HOSPITAL/CL�NICA") || s.contains("HOSPITAL")) {
                     hosp = s;
                     break cli;
                 }
             }
-            ManejadorMunicipio muni= new ManejadorMunicipio();
+            ManejadorMunicipio muni = new ManejadorMunicipio();
             sheet.getRow(pos).getCell(3).setCellValue(hosp);
             sheet.getRow(pos).getCell(4).setCellValue(muni.getMunicipio(this.getMunicipio()));
-            float res_oport_naci = this.getRegistros_oportunos_nacimientos()*100/this.getTotal_nacimientos();
-            float res_oport_defu = this.getRegistros_oportunos_defunciones()*100/this.getTotal_defunciones();
-            float calidad_naci = (this.getTotal_nacimientos()-tem_mayor_nac)*100/this.getTotal_nacimientos();
-            float calidad_def = (this.getTotal_defunciones() -tem_may_def)*100/this.getTotal_defunciones();
+            float res_oport_naci = this.getRegistros_oportunos_nacimientos() * 100 / this.getTotal_nacimientos();
+            float res_oport_defu = this.getRegistros_oportunos_defunciones() * 100 / this.getTotal_defunciones();
+            float calidad_naci = (this.getTotal_nacimientos() - tem_mayor_nac) * 100 / this.getTotal_nacimientos();
+            float calidad_def = (this.getTotal_defunciones() - tem_may_def) * 100 / this.getTotal_defunciones();
             sheet.getRow(1).getCell(2).setCellValue("VIRGILIO");
             sheet.getRow(pos).getCell(7).setCellValue(res_oport_naci);
             sheet.getRow(pos).getCell(8).setCellValue(res_oport_defu);
             sheet.getRow(pos).getCell(9).setCellValue(calidad_naci);
             sheet.getRow(pos).getCell(10).setCellValue(calidad_def);
-            System.out.println(pos+" "+res_oport_naci+"  "+res_oport_defu+" "+calidad_naci+"  "+calidad_def);
+            System.out.println(pos + " " + res_oport_naci + "  " + res_oport_defu + " " + calidad_naci + "  " + calidad_def);
             FileOutputStream out = new FileOutputStream(path);
             wb.write(out);
             out.flush();
