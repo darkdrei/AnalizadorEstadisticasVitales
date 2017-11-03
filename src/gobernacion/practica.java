@@ -20,9 +20,15 @@ public class practica {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ArrayList<String> municipios = new ArrayList<>();
-        System.out.println(Pattern.matches("\\d+/\\d+/\\d{2,2}", "10/23/124"));
-        System.out.println(Pattern.matches("\\d{2,2}", "14"));
+        int c=0;
+        do{
+            c++;
+            System.out.println(""+c);
+            
+        }while(c < 5);
+//        ArrayList<String> municipios = new ArrayList<>();
+//        System.out.println(Pattern.matches("\\d+/\\d+/\\d{2,2}", "10/23/124"));
+//        System.out.println(Pattern.matches("\\d{2,2}", "14"));
 //        municipios.add(new String("ACHI"));
 //        municipios.add(new String("ACHÍ"));
 //        municipios.add(new String("MAGANGUE"));
