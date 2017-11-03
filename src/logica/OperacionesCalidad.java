@@ -11,5 +11,6 @@ package logica;
  */
 public interface OperacionesCalidad {
     public void analizarCalidaDeLaInformacion();
+    public void analizarCalidaDeLaInformacion(int n);
     public void analizarCalidaDeLaInformacion(Object data);
 }
