@@ -515,7 +515,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             word.setTotal_defunciones(r.getDefunciones().size());
             word.setRegistros_oportunos_nacimientos(con_oporunidad);
             word.setRegistros_oportunos_defunciones(oportunidad_defuncion);
-            System.out.println("*********** "+con_oporunidad+"   "+oportunidad_defuncion);
+            word.setPath(this.getPath());
             word.writeFile();
         }
     }
