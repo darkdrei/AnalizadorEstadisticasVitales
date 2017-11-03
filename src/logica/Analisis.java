@@ -46,6 +46,8 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
     private String info = "";
     private ArrayList<TemporalInfo> reporte = new ArrayList<>();
     private AnalizadorCalidad analizador_calidad;
+    
+    
 
     public ArrayList<TemporalInfo> getReporte() {
         return reporte;
