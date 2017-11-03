@@ -284,6 +284,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             word.setInstituciones_de_salud_defunciones(instituciones_de_salud_defunciones);
             word.setTotal_nacimientos(r.getNacimientos().size());
             word.setTotal_defunciones(r.getDefunciones().size());
+            word.setPath(this.getPath());
             word.writeFile();
         }
     }
