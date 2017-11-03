@@ -49,6 +49,14 @@ public class AnalizadorCalidad implements OperacionesCalidad {
     private ArrayList<EstadisticaVital_defuncion> tipo_profesional = new ArrayList<>();
     private ArrayList<EstadisticaVital_defuncion> estado_defuncion =new ArrayList<>();
     private String path ="";
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
     
 
     public AnalizadorCalidad() {
