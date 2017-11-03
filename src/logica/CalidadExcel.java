@@ -109,7 +109,8 @@ public class CalidadExcel extends Reporte {
             ManejadorMunicipio muni= new ManejadorMunicipio();
             sheet.getRow(pos).getCell(3).setCellValue(hosp);
             sheet.getRow(pos).getCell(4).setCellValue(muni.getMunicipio(this.getMunicipio()));
-            
+            float res_oport_naci = this.getRegistros_oportunos_nacimientos()*100/this.getTotal_nacimientos();
+            float res_oport_defu = this.getRegistros_oportunos_defunciones()*100/this.getTotal_defunciones();
             FileOutputStream out = new FileOutputStream(path);
             wb.write(out);
             out.flush();
