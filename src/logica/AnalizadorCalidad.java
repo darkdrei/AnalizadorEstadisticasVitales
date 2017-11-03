@@ -309,7 +309,6 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             estado = new ArrayList<>();
             con_multiplicidad = 0;
             multiplicidad = new ArrayList<>();
-            System.out.println("###########################33333");
             ArrayList<String> instituciones_de_salud_nacimiento = new ArrayList<>();
             ArrayList<String> instituciones_de_salud_defunciones = new ArrayList<>();
             stop:
