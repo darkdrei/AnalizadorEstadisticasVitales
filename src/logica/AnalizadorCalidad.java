@@ -48,6 +48,8 @@ public class AnalizadorCalidad implements OperacionesCalidad {
     private ArrayList<EstadisticaVital_defuncion> mujeres = new ArrayList<>();
     private ArrayList<EstadisticaVital_defuncion> tipo_profesional = new ArrayList<>();
     private ArrayList<EstadisticaVital_defuncion> estado_defuncion =new ArrayList<>();
+    private String path ="";
+    
 
     public AnalizadorCalidad() {
         this.datos = new ContenedorRegistroMunicio();
@@ -507,6 +509,11 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             System.out.println("*********** "+con_oporunidad+"   "+oportunidad_defuncion);
             word.writeFile();
         }
+    }
+
+    @Override
+    public void analizarCalidaDeLaInformacion(int n) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
