@@ -245,13 +245,22 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
     }
 
     @Override
-    public void analizarCalidaDeLaInformacion() {
-        this.analizador_calidad.analizarCalidaDeLaInformacion();
-        this.analizador_calidad.analizarCalidaDeLaInformacion(null);
+    public void analizarCalidaDeLaInformacion(int n) {
+        if(n ==  1){
+            this.analizador_calidad.analizarCalidaDeLaInformacion();
+        }else if (n==2){
+            this.analizador_calidad.analizarCalidaDeLaInformacion(null);
+        }
+        
     }
 
     @Override
     public void analizarCalidaDeLaInformacion(Object data) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void analizarCalidaDeLaInformacion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
