@@ -5,16 +5,36 @@
  */
 package logica;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
  * @author dark
  */
-public class AgrupadorCalidadExcel implements ExportFile{
+public class AgrupadorCalidadExcel implements ExportFile {
+
     private ArrayList<CeldaCalidadExcel> filas_excel;
+    private String path;
 
     public AgrupadorCalidadExcel() {
+        this.filas_excel = new ArrayList<>();
+    }
+
+    public AgrupadorCalidadExcel(String path) {
+        this.path = path;
         this.filas_excel = new ArrayList<>();
     }
 
@@ -24,11 +44,66 @@ public class AgrupadorCalidadExcel implements ExportFile{
 
     public void setFilas_excel(ArrayList<CeldaCalidadExcel> filas_excel) {
         this.filas_excel = filas_excel;
-    } 
+    }
 
     @Override
     public void writeFile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            FileCopy c = new FileCopy();
+            ManejadorMunicipio m = new ManejadorMunicipio();
+            String path = "";
+            java.util.Date fecha = new Date();
+            String basePath = new File("").getAbsolutePath();
+            if (System.getProperty("os.name").contains("Linux")) {
+                path = this.getPath() + "/" + "calidad_" + fecha + "" + ".xlsx";
+                c.fileCopy(basePath + "/data/calidad.xlsx", path);
+            } else {
+                path = this.getPath() + "\\" + "calidad_" + fecha + "" + ".xlsx";
+                c.fileCopy(basePath + "\\data\\calidad.xlsx", path);
+            }
+            File file = new File(path);
+            //OPRTUNIDAD
+            InputStream excelFile = null;
+            excelFile = new FileInputStream(path);
+            XSSFWorkbook wb = new XSSFWorkbook(excelFile);
+            XSSFSheet sheet = wb.getSheetAt(0);
+            XSSFRow row;
+            XSSFCell cell;
+            int pos = 4;
+            boolean res = true;
+            System.out.println("**************   " + sheet.getRow(4).getCell(2).toString().length() + "   *****************");
+            do {
+                if (sheet.getRow(4).getCell(2).toString().length() == 0) {
+                    res = false;
+                } else {
+                    pos++;
+                }
+            } while (res);
+            for (CeldaCalidadExcel ex : this.getFilas_excel()) {
+                sheet.getRow(pos).getCell(3).setCellValue(ex.getEntidad());
+                sheet.getRow(pos).getCell(2).setCellValue(ex.getMunicipio());
+                sheet.getRow(pos).getCell(7).setCellValue(ex.getOportunidad_vivo());
+                sheet.getRow(pos).getCell(8).setCellValue(ex.getOportunidad_defuncion());
+                sheet.getRow(pos).getCell(9).setCellValue(ex.getCalidad_vivo());
+                sheet.getRow(pos).getCell(10).setCellValue(ex.getCalidad_defunciones());
+                pos++;
+            }
+            FileOutputStream out = new FileOutputStream(path);
+            wb.write(out);
+            out.flush();
+            out.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CalidadExcel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(CalidadExcel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 }
