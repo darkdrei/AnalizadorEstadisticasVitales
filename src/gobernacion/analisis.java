@@ -62,9 +62,10 @@ public class analisis {
                                         new File("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/Control de certificados/2013.xls")};
         int muni[]=new int[]{7};
         a.extraerMultiplesArchivos( muni,vital_vivos, vital_difuntos,control );
-        a.generarWord("C:\\Users\\E7250\\Documents");
+        //a.generarWord("C:\\Users\\E7250\\Documents");
         //System.out.println(a.getInfo());
-        a.analizarCalidaDeLaInformacion();
+        a.getAnalizador_calidad().setPath("/home/dark/Documentos");
+        a.analizarCalidaDeLaInformacion(2);
 //      
 //        ArchivoControlPrenatalDefuncion control_prenatal_defuncion = new ArchivoControlPrenatalDefuncion(new File("/home/dark/aaaaa/SOPORTE/CONTROL DE PAPELERIA 2014-DASALUD.xls"));
 //        control_prenatal_defuncion.seleccionarMunicipio(0);
