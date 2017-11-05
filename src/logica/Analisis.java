@@ -46,8 +46,6 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
     private String info = "";
     private ArrayList<TemporalInfo> reporte = new ArrayList<>();
     private AnalizadorCalidad analizador_calidad;
-    
-    
 
     public ArrayList<TemporalInfo> getReporte() {
         return reporte;
@@ -56,7 +54,6 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
     public void setReporte(ArrayList<TemporalInfo> reporte) {
         this.reporte = reporte;
     }
-    
 
     public Analisis(File control_prenatal_defuncion, File control_prenatal_vivo, File deuda_certificado, File estadistica_vital_defunfion, File estadistica_vital_nacimientos) {
         this.file = estadistica_vital_defunfion;
@@ -248,12 +245,12 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
 
     @Override
     public void analizarCalidaDeLaInformacion(int n) {
-        if(n ==  1){
+        if (n == 1) {
             this.analizador_calidad.analizarCalidaDeLaInformacion();
-        }else if (n==2){
+        } else if (n == 2) {
             this.analizador_calidad.analizarCalidaDeLaInformacion(null);
         }
-        
+
     }
 
     @Override
@@ -290,7 +287,6 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
             this.anios_difuntos = anios_difuntos;
         }
 
-        
         public TemporalInfo() {
         }
 
@@ -393,7 +389,7 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
                 par_run1.setFontFamily("Arial Black");
                 par_run1.setFontSize(13);
                 cell1.setColor("9965F3");
-                par_run1.setText("Fecha de entrega 20"+valor);
+                par_run1.setText("Fecha de entrega 20" + valor);
                 par_run.setBold(true);
                 for (Object vivo : vivos) {
                     ControlPapeleriaNacimientos nacimiento = (ControlPapeleriaNacimientos) vivo;
@@ -425,11 +421,13 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
                 info += "\n\tAnio no numerico  son " + con + " registros.";
                 info += tem_info_vivos_no_claro;
             }
-            /*************************DEFUNCIONES***********************************/
+            /**
+             * ***********************DEFUNCIONES**********************************
+             */
             run2.addBreak();
 
             paragraph.setAlignment(ParagraphAlignment.CENTER);
-             vivos = t.getDifuntos();
+            vivos = t.getDifuntos();
             run2.setText("Total registros defunciones pendientes : " + vivos.size());
             for (int i = 0; i < vivos.size(); i++) {
                 int pos = i;
@@ -482,7 +480,7 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
                 par_run1.setFontFamily("Arial Black");
                 par_run1.setFontSize(13);
                 cell1.setColor("9965F3");
-                par_run1.setText("Fecha de entrega 20"+valor);
+                par_run1.setText("Fecha de entrega 20" + valor);
                 par_run.setBold(true);
                 for (Object vivo : vivos) {
                     ControlPapeleriaDefunciones nacimiento = (ControlPapeleriaDefunciones) vivo;
@@ -515,7 +513,15 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
                 info += tem_info_vivos_no_claro;
             }
             try {
-                FileOutputStream output = new FileOutputStream(ruta+"\\"+t.getMunicipio()+".docx");
+                FileCopy c = new FileCopy();
+                String path = "";
+                if (System.getProperty("os.name").contains("Linux")) {
+                    path =  ruta + "/" + t.getMunicipio() + ".docx";
+                } else {
+                    path = ruta + "\\" + t.getMunicipio() + ".docx";
+                }
+                System.out.println("//////////////////// " + path);
+                FileOutputStream output = new FileOutputStream(path);
                 document.write(output);
                 output.close();
             } catch (Exception e) {
