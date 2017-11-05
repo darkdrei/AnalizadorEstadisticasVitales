@@ -136,6 +136,7 @@ public class CalidadExcel extends Reporte {
             float res_oport_naci = this.getRegistros_oportunos_nacimientos()  / this.getTotal_nacimientos();
             float res_oport_defu = this.getRegistros_oportunos_defunciones()  / this.getTotal_defunciones();
             float calidad_naci = (this.getTotal_nacimientos() - tem_mayor_nac)  / this.getTotal_nacimientos();
+            System.out.println(" "+this.getTotal_nacimientos()+"   "+tem_mayor_nac);
             float calidad_def = (this.getTotal_defunciones() - tem_may_def)  / this.getTotal_defunciones();
             System.out.println(" calidad ---> "+tem_mayor_nac+"   "+tem_may_def);
             sheet.getRow(1).getCell(2).setCellValue("VIRGILIO");
