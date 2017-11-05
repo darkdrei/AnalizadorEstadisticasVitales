@@ -516,6 +516,14 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             word.setRegistros_oportunos_nacimientos(con_oporunidad);
             word.setRegistros_oportunos_defunciones(oportunidad_defuncion);
             word.setPath(this.getPath());
+            System.out.println("============================");
+            System.out.println(area_defuncion.size());
+            System.out.println(tipo_defuncion.size());
+            System.out.println(direccion_defuncion.size());
+            System.out.println(mujeres.size());
+            System.out.println(tipo_profesional.size());
+            System.out.println(estado_defuncion.size());
+            System.out.println("============================");
             word.writeFile();
         }
     }
