@@ -32,8 +32,8 @@ public class test {
         System.out.println(20*100/80);
         String so = System.getProperty("os.name"); 
         System.out.println(so);
-//            String basePath = new File("").getAbsolutePath();
-//            System.out.println(basePath);
+            String basePath = new File("").getAbsolutePath();
+            System.out.println(basePath);
 //        InputStream excelFile = null;
 //        try {
 //            // TODO code application logic here
