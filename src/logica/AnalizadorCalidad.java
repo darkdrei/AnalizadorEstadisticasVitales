@@ -517,7 +517,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             word.setRegistros_oportunos_nacimientos(con_oporunidad);
             word.setRegistros_oportunos_defunciones(oportunidad_defuncion);
             word.setPath(this.getPath());
-            word.writeFile();
+            exceles.getFilas_excel().add(word.getCelda());
         }
     }
 
