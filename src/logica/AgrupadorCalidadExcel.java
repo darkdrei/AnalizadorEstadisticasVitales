@@ -12,17 +12,17 @@ import java.util.ArrayList;
  * @author dark
  */
 public class AgrupadorCalidadExcel implements ExportFile{
-    private ArrayList<CalidadExcel> filas_excel;
+    private ArrayList<CeldaCalidadExcel> filas_excel;
 
     public AgrupadorCalidadExcel() {
         this.filas_excel = new ArrayList<>();
     }
 
-    public ArrayList<CalidadExcel> getFilas_excel() {
+    public ArrayList<CeldaCalidadExcel> getFilas_excel() {
         return filas_excel;
     }
 
-    public void setFilas_excel(ArrayList<CalidadExcel> filas_excel) {
+    public void setFilas_excel(ArrayList<CeldaCalidadExcel> filas_excel) {
         this.filas_excel = filas_excel;
     } 
 
