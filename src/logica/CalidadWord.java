@@ -5,6 +5,7 @@
  */
 package logica;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
@@ -83,7 +84,14 @@ public class CalidadWord extends Reporte {
         integrarTablaDefuncion(document, "Estado de Certificacion", this.getEstado_defuncion());
         try {
             System.out.println("*****************");
-            FileOutputStream output = new FileOutputStream(this.getPath()+"//"+muni.getMunicipio(this.getMunicipio())+".docx");
+            String path = "";
+            String basePath = new File("").getAbsolutePath();
+            if (System.getProperty("os.name").contains("Linux")) {
+                path = this.getPath() + "/" +"calidad_"+muni.getMunicipio(this.getMunicipio())+ ".docx";
+            } else {
+                path = this.getPath() + "\\" +"calidad_"+ muni.getMunicipio(this.getMunicipio()) + ".docx";
+            }
+            FileOutputStream output = new FileOutputStream(path);
             document.write(output);
             output.close();
         } catch (Exception e) {
