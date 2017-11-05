@@ -519,6 +519,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             word.setPath(this.getPath());
             exceles.getFilas_excel().add(word.getCelda());
         }
+        
     }
 
     @Override
