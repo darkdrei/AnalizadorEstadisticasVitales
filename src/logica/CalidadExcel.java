@@ -54,40 +54,56 @@ public class CalidadExcel extends Reporte {
             float tem_mayor_nac = 0, tem_may_def = 0;
             if (this.getArea_nacimiento().size() > tem_mayor_nac) {
                 tem_mayor_nac = this.getArea_nacimiento().size();
-            } else if (this.getSitio_nacimiento().size() > tem_mayor_nac) {
+            }
+             if (this.getSitio_nacimiento().size() > tem_mayor_nac) {
                 tem_mayor_nac = this.getSitio_nacimiento().size();
-            } else if (this.getSemana_gestacion().size() > tem_mayor_nac) {
+            }
+             if (this.getSemana_gestacion().size() > tem_mayor_nac) {
                 tem_mayor_nac = this.getSemana_gestacion().size();
-            } else if (this.getPeso().size() > tem_mayor_nac) {
+            }
+             if (this.getPeso().size() > tem_mayor_nac) {
                 tem_mayor_nac = this.getPeso().size();
-            } else if (this.getPeso_tiempo_gestacion().size() > tem_mayor_nac) {
+            }
+             if (this.getPeso_tiempo_gestacion().size() > tem_mayor_nac) {
                 tem_mayor_nac = this.getPeso_tiempo_gestacion().size();
-            } else if (this.getPeso_tiempo_gestacion_talla().size() > tem_mayor_nac) {
+            }
+             if (this.getPeso_tiempo_gestacion_talla().size() > tem_mayor_nac) {
                 tem_mayor_nac = this.getPeso_tiempo_gestacion_talla().size();
-            } else if (this.getGrupo_sanguineo().size() > tem_mayor_nac) {
+            }
+             if (this.getGrupo_sanguineo().size() > tem_mayor_nac) {
                 tem_mayor_nac = this.getGrupo_sanguineo().size();
-            } else if (this.getFactor_rh().size() > tem_mayor_nac) {
+            }
+             if (this.getFactor_rh().size() > tem_mayor_nac) {
                 tem_mayor_nac = this.getFactor_rh().size();
-            } else if (this.getDireccion().size() > tem_mayor_nac) {
+            }
+             if (this.getDireccion().size() > tem_mayor_nac) {
                 tem_mayor_nac = this.getDireccion().size();
-            } else if (this.getEdad_padre().size() > tem_mayor_nac) {
+            }
+             if (this.getEdad_padre().size() > tem_mayor_nac) {
                 tem_mayor_nac = this.getEdad_padre().size();
-            } else if (this.getEstado().size() > tem_mayor_nac) {
+            }
+             if (this.getEstado().size() > tem_mayor_nac) {
                 tem_mayor_nac = this.getEstado().size();
-            } else if (this.getMultiplicidad().size() > tem_mayor_nac) {
+            }
+             if (this.getMultiplicidad().size() > tem_mayor_nac) {
                 tem_mayor_nac = this.getMultiplicidad().size();
             }
             if (tem_may_def < this.getArea_defuncion().size()) {
                 tem_may_def = this.getArea_defuncion().size();
-            } else if (tem_may_def < this.getTipo_defuncion().size()) {
+            }
+             if (tem_may_def < this.getTipo_defuncion().size()) {
                 tem_may_def = this.getTipo_defuncion().size();
-            } else if (tem_may_def < this.getDireccion_defuncion().size()) {
+            }
+             if (tem_may_def < this.getDireccion_defuncion().size()) {
                 tem_may_def = this.getDireccion_defuncion().size();
-            } else if (tem_may_def < this.getMujeres().size()) {
+            }
+             if (tem_may_def < this.getMujeres().size()) {
                 tem_may_def = this.getMujeres().size();
-            } else if (tem_may_def < this.getTipo_profesional().size()) {
+            }
+             if (tem_may_def < this.getTipo_profesional().size()) {
                 tem_may_def = this.getTipo_profesional().size();
-            } else if (tem_may_def < this.getEstado_defuncion().size()) {
+            }
+             if (tem_may_def < this.getEstado_defuncion().size()) {
                 tem_may_def = this.getEstado_defuncion().size();
             }
             InputStream excelFile = null;
@@ -136,6 +152,20 @@ public class CalidadExcel extends Reporte {
             System.out.println(tipo_profesional.size());
             System.out.println(estado_defuncion.size());
             System.out.println(tem_may_def);
+            System.out.println("************************************");
+            System.out.println(this.getArea_nacimiento().size());
+            System.out.println(getSitio_nacimiento().size());
+            System.out.println(getSemana_gestacion().size());
+            System.out.println(getPeso().size());
+            System.out.println(getPeso_tiempo_gestacion().size());
+            System.out.println(getPeso_tiempo_gestacion_talla().size());
+            System.out.println(getGrupo_sanguineo().size());
+            System.out.println(getFactor_rh().size());
+            System.out.println(getDireccion().size());
+            System.out.println(getEdad_padre().size());
+            System.out.println(getEstado().size());
+            System.out.println(getMultiplicidad().size());
+            System.out.println(tem_mayor_nac);
             System.out.println("============================");
             FileOutputStream out = new FileOutputStream(path);
             wb.write(out);
