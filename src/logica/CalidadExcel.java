@@ -39,17 +39,18 @@ public class CalidadExcel extends Reporte {
             FileCopy c = new FileCopy();
             ManejadorMunicipio m = new ManejadorMunicipio();
             String path = "";
+            String basePath = new File("").getAbsolutePath();
             if (System.getProperty("os.name").contains("Linux")) {
-                path = this.getPath() + "/" + m.getMunicipio(this.getMunicipio()) + ".xlsx";
-                c.fileCopy("/home/dark/proyectos/AnalizadorEstadisticasVitales/data/calidad.xlsx", path);
-            }else{
-                path = this.getPath() + "\\" + m.getMunicipio(this.getMunicipio()) + ".xlsx";
-                c.fileCopy(this.getPath()+"\\data\\calidad.xlsx", path);
+                path = this.getPath() + "/" +"calidad_"+m.getMunicipio(this.getMunicipio()) + ".xlsx";
+                c.fileCopy(basePath+ "/data/calidad.xlsx", path);
+            } else {
+                path = this.getPath() + "\\" +"calidad_"+ m.getMunicipio(this.getMunicipio()) + ".xlsx";
+                c.fileCopy(basePath + "\\data\\calidad.xlsx", path);
             }
             File file = new File(path);
             //OPRTUNIDAD
-            double oportunidad_nacimiento = this.getRegistros_oportunos_nacimientos() * 100.0 / this.getTotal_nacimientos();
-            double oportunidad_defunciones = this.getRegistros_oportunos_defunciones() * 100.0 / this.getTotal_defunciones();
+            double oportunidad_nacimiento = this.getRegistros_oportunos_nacimientos() / this.getTotal_nacimientos();
+            double oportunidad_defunciones = this.getRegistros_oportunos_defunciones()/ this.getTotal_defunciones();
             float tem_mayor_nac = 0, tem_may_def = 0;
             if (this.getArea_nacimiento().size() > tem_mayor_nac) {
                 tem_mayor_nac = this.getArea_nacimiento().size();
@@ -89,6 +90,14 @@ public class CalidadExcel extends Reporte {
             } else if (tem_may_def > this.getEstado_defuncion().size()) {
                 tem_may_def = this.getEstado_defuncion().size();
             }
+            System.out.println("============================");
+            System.out.println(area_defuncion.size());
+            System.out.println(tipo_defuncion.size());
+            System.out.println(direccion_defuncion.size());
+            System.out.println(mujeres.size());
+            System.out.println(tipo_profesional.size());
+            System.out.println(estado_defuncion.size());
+            System.out.println("============================");
             InputStream excelFile = null;
             excelFile = new FileInputStream(path);
             XSSFWorkbook wb = new XSSFWorkbook(excelFile);
@@ -115,11 +124,12 @@ public class CalidadExcel extends Reporte {
             }
             ManejadorMunicipio muni = new ManejadorMunicipio();
             sheet.getRow(pos).getCell(3).setCellValue(hosp);
-            sheet.getRow(pos).getCell(4).setCellValue(muni.getMunicipio(this.getMunicipio()));
-            float res_oport_naci = this.getRegistros_oportunos_nacimientos() * 100 / this.getTotal_nacimientos();
-            float res_oport_defu = this.getRegistros_oportunos_defunciones() * 100 / this.getTotal_defunciones();
-            float calidad_naci = (this.getTotal_nacimientos() - tem_mayor_nac) * 100 / this.getTotal_nacimientos();
-            float calidad_def = (this.getTotal_defunciones() - tem_may_def) * 100 / this.getTotal_defunciones();
+            sheet.getRow(pos).getCell(2).setCellValue(muni.getMunicipio(this.getMunicipio()));
+            float res_oport_naci = this.getRegistros_oportunos_nacimientos()  / this.getTotal_nacimientos();
+            float res_oport_defu = this.getRegistros_oportunos_defunciones()  / this.getTotal_defunciones();
+            float calidad_naci = (this.getTotal_nacimientos() - tem_mayor_nac)  / this.getTotal_nacimientos();
+            float calidad_def = (this.getTotal_defunciones() - tem_may_def)  / this.getTotal_defunciones();
+            System.out.println(" calidad ---> "+tem_mayor_nac+"   "+tem_may_def);
             sheet.getRow(1).getCell(2).setCellValue("VIRGILIO");
             sheet.getRow(pos).getCell(7).setCellValue(res_oport_naci);
             sheet.getRow(pos).getCell(8).setCellValue(res_oport_defu);
