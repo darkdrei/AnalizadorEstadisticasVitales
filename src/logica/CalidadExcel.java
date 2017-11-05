@@ -77,27 +77,19 @@ public class CalidadExcel extends Reporte {
             } else if (this.getMultiplicidad().size() > tem_mayor_nac) {
                 tem_mayor_nac = this.getMultiplicidad().size();
             }
-            if (tem_may_def > this.getArea_defuncion().size()) {
+            if (tem_may_def < this.getArea_defuncion().size()) {
                 tem_may_def = this.getArea_defuncion().size();
-            } else if (tem_may_def > this.getTipo_defuncion().size()) {
+            } else if (tem_may_def < this.getTipo_defuncion().size()) {
                 tem_may_def = this.getTipo_defuncion().size();
-            } else if (tem_may_def > this.getDireccion_defuncion().size()) {
+            } else if (tem_may_def < this.getDireccion_defuncion().size()) {
                 tem_may_def = this.getDireccion_defuncion().size();
-            } else if (tem_may_def > this.getMujeres().size()) {
+            } else if (tem_may_def < this.getMujeres().size()) {
                 tem_may_def = this.getMujeres().size();
-            } else if (tem_may_def > this.getTipo_profesional().size()) {
+            } else if (tem_may_def < this.getTipo_profesional().size()) {
                 tem_may_def = this.getTipo_profesional().size();
-            } else if (tem_may_def > this.getEstado_defuncion().size()) {
+            } else if (tem_may_def < this.getEstado_defuncion().size()) {
                 tem_may_def = this.getEstado_defuncion().size();
             }
-            System.out.println("============================");
-            System.out.println(area_defuncion.size());
-            System.out.println(tipo_defuncion.size());
-            System.out.println(direccion_defuncion.size());
-            System.out.println(mujeres.size());
-            System.out.println(tipo_profesional.size());
-            System.out.println(estado_defuncion.size());
-            System.out.println("============================");
             InputStream excelFile = null;
             excelFile = new FileInputStream(path);
             XSSFWorkbook wb = new XSSFWorkbook(excelFile);
@@ -136,6 +128,15 @@ public class CalidadExcel extends Reporte {
             sheet.getRow(pos).getCell(9).setCellValue(calidad_naci);
             sheet.getRow(pos).getCell(10).setCellValue(calidad_def);
             System.out.println(pos + " " + res_oport_naci + "  " + res_oport_defu + " " + calidad_naci + "  " + calidad_def);
+            System.out.println("============================");
+            System.out.println(area_defuncion.size());
+            System.out.println(tipo_defuncion.size());
+            System.out.println(direccion_defuncion.size());
+            System.out.println(mujeres.size());
+            System.out.println(tipo_profesional.size());
+            System.out.println(estado_defuncion.size());
+            System.out.println(tem_may_def);
+            System.out.println("============================");
             FileOutputStream out = new FileOutputStream(path);
             wb.write(out);
             out.flush();
