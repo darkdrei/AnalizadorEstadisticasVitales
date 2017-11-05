@@ -16,6 +16,8 @@ public class CeldaCalidadExcel {
     private String periodo;
     private float cobertura_vivo;
     private float cobertura_defuncion;
+    private float oportunidad_vivo;
+    private float oportunidad_defuncion;
     private float calidad_vivo;
     private float calidad_defunciones;
     private String responsable;
@@ -34,13 +36,13 @@ public class CeldaCalidadExcel {
         this.observeciones = observeciones;
     }
     
-    public CeldaCalidadExcel(String municipio, String entidad, float cobertura_vivo, float cobertura_defuncion, float calidad_vivo, float calidad_defunciones) {
+    public CeldaCalidadExcel(String municipio, String entidad, float oportunidad_vivo, float oportunidad_defuncion, float calidad_vivo, float calidad_defunciones) {
         this.zode = "";
         this.municipio = municipio;
         this.entidad = entidad;
         this.periodo = "";
-        this.cobertura_vivo = cobertura_vivo;
-        this.cobertura_defuncion = cobertura_defuncion;
+        this.cobertura_vivo = oportunidad_vivo;
+        this.cobertura_defuncion = oportunidad_defuncion;
         this.calidad_vivo = calidad_vivo;
         this.calidad_defunciones = calidad_defunciones;
         this.responsable = "";
