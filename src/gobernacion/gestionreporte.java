@@ -56,7 +56,7 @@ public class gestionreporte extends javax.swing.JFrame {
         btnEstadisticaVitalFallecimientos = new javax.swing.JButton();
         btnEstadisticaControlParental = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnAnalizar = new javax.swing.JButton();
         btnGenerarReporte = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         btnGenerarReporte1 = new javax.swing.JButton();
@@ -118,10 +118,10 @@ public class gestionreporte extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reporte", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 24))); // NOI18N
 
-        jButton1.setText("Analizar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAnalizar.setText("Analizar");
+        btnAnalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAnalizarActionPerformed(evt);
             }
         });
 
@@ -163,7 +163,7 @@ public class gestionreporte extends javax.swing.JFrame {
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGenerarReporte, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(btnGenerarReporte1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGenerarReporte2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -172,7 +172,7 @@ public class gestionreporte extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -259,7 +259,7 @@ public class gestionreporte extends javax.swing.JFrame {
         this.progress_bar.dispose();
         this.progress_bar=null;
     }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
         // TODO add your handling code here:
         System.out.println(" vivos: " + estadistica_vital_vivos.length + "  " + estadistica_vital_defuncines.length + "   " + control_penatral_vivo.length + "  " + jList1.getSelectedIndices());
         if (jList1.getSelectedIndices().length > 0) {
@@ -286,7 +286,7 @@ public class gestionreporte extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Usted debe seleccionar los municipios de analisis.");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAnalizarActionPerformed
 
     private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
         // TODO add your handling code here:
@@ -357,7 +357,13 @@ public class gestionreporte extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEstadisticaControlParentalActionPerformed
 
     public void deshabilitar(boolean b){
-        
+        btnAnalizar.setEnabled(!b);
+        deshabilitarReporte(b);
+        btnLimpiar.setEnabled(!b);
+    }
+    
+    public void deshabilitarReporte(boolean b){
+    
     }
     
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -482,6 +488,7 @@ public class gestionreporte extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea area;
+    private javax.swing.JButton btnAnalizar;
     private javax.swing.JButton btnEstadisticaControlParental;
     private javax.swing.JButton btnEstadisticaVitalFallecimientos;
     private javax.swing.JButton btnEstadisticaVitalNacimientos;
@@ -489,7 +496,6 @@ public class gestionreporte extends javax.swing.JFrame {
     private javax.swing.JButton btnGenerarReporte1;
     private javax.swing.JButton btnGenerarReporte2;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
