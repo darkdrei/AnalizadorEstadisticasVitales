@@ -40,6 +40,12 @@ public class gestionreporte extends javax.swing.JFrame {
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ima/list.png"));
         setIconImage(icon);
+        deshabilitar(true);
+        deshabilitarReporte(false);
+        btnEstadisticaControlParental.setEnabled(false);
+        btnEstadisticaVitalFallecimientos.setEnabled(false);
+        btnLimpiar.setEnabled(true);
+        btnEstadisticaVitalNacimientos.requestFocus();
     }
 
     /**
@@ -324,6 +330,7 @@ public class gestionreporte extends javax.swing.JFrame {
         // TODO add your handling code here:
         estadistica_vital_vivos = capturarArchivo("Ruaf Nacimientos");
         btnEstadisticaVitalNacimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ima/check.png")));
+        btnEstadisticaVitalFallecimientos.setEnabled(true);
     }//GEN-LAST:event_btnEstadisticaVitalNacimientosActionPerformed
 
     public File[] capturarArchivo(String men) {
@@ -348,12 +355,19 @@ public class gestionreporte extends javax.swing.JFrame {
         // TODO add your handling code here:
         estadistica_vital_defuncines = capturarArchivo("Ruaf Defunciones");
         btnEstadisticaVitalFallecimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ima/check.png")));
+        btnEstadisticaControlParental.setEnabled(true);
     }//GEN-LAST:event_btnEstadisticaVitalFallecimientosActionPerformed
 
+    public void habilitarBotones(boolean b){
+        btnEstadisticaControlParental.setEnabled(b);
+        btnEstadisticaVitalFallecimientos.setEnabled(b);
+        btnEstadisticaVitalNacimientos.setEnabled(b);
+    }
     private void btnEstadisticaControlParentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticaControlParentalActionPerformed
         // TODO add your handling code here:
         this.control_penatral_vivo = capturarArchivo("Control de papeleria");
         btnEstadisticaControlParental.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ima/check.png")));
+        this.btnAnalizar.setEnabled(true);
     }//GEN-LAST:event_btnEstadisticaControlParentalActionPerformed
 
     public void deshabilitar(boolean b) {
