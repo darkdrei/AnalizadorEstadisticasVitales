@@ -292,7 +292,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
     @Override
     public void analizarCalidaDeLaInformacion(Object data) {
         String hospital ="";
-        AgrupadorCalidadExcel exceles= new AgrupadorCalidadExcel();
+        AgrupadorCalidadExcel exceles= new AgrupadorCalidadExcel(this.getPath());
         for (RegistrosMunicipio r : this.getDatos().getRegistros()) {
             float con_oporunidad =0;
             con_area_nacimiento = 0;
@@ -519,7 +519,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             word.setPath(this.getPath());
             exceles.getFilas_excel().add(word.getCelda());
         }
-        
+        exceles.writeFile();
     }
 
     @Override
