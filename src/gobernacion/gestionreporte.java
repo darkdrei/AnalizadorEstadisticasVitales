@@ -36,15 +36,27 @@ public class gestionreporte extends javax.swing.JFrame {
     /**
      * Creates new form gestionreporte
      */
+    public String getRuta(String nom){
+        String path = "";
+        String basePath = new File("").getAbsolutePath();
+        if (System.getProperty("os.name").contains("Linux")) {
+            path = "/ima/"+nom;
+        } else {
+            path = "\\ima\\"+nom;
+        }
+        return path;
+    }
     public gestionreporte() throws IOException {
         initComponents();
-        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ima/list.png"));
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource(getRuta("list.png")));
         setIconImage(icon);
         deshabilitar(true);
         deshabilitarReporte(false);
         btnEstadisticaControlParental.setEnabled(false);
         btnEstadisticaVitalFallecimientos.setEnabled(false);
         btnLimpiar.setEnabled(true);
+        selectList.setEnabled(false);
+        selectList.setEnabled(true);
         btnEstadisticaVitalNacimientos.requestFocus();
     }
 
@@ -69,7 +81,7 @@ public class gestionreporte extends javax.swing.JFrame {
         btnGenerarReporte2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        selectList = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
         area = new javax.swing.JTextArea();
 
@@ -192,17 +204,17 @@ public class gestionreporte extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Seleccione Municipio", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 24))); // NOI18N
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        selectList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "ACHÍ", "MAGANGUÉ", "MONTECRISTO", "PINILLOS", "SAN JACINTO DEL CAUCA", "TIQUISIO", "SAN JUAN NEPOMUCENO", "SAN JACINTO", "MARIA LABAJA", " " };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        selectList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                jList1ValueChanged(evt);
+                selectListValueChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(selectList);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -267,19 +279,19 @@ public class gestionreporte extends javax.swing.JFrame {
     }
     private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
         // TODO add your handling code here:
-        System.out.println(" vivos: " + estadistica_vital_vivos.length + "  " + estadistica_vital_defuncines.length + "   " + control_penatral_vivo.length + "  " + jList1.getSelectedIndices());
-        if (jList1.getSelectedIndices().length > 0) {
+        if (selectList.getSelectedIndices().length > 0) {
             if (estadistica_vital_vivos.length > 0) {
                 if (estadistica_vital_defuncines.length > 0) {
                     if (this.control_penatral_vivo.length > 0) {
-
-                        for (int control_penatral_defuncion1 : jList1.getSelectedIndices()) {
-                            System.out.println(control_penatral_defuncion1);
-                        }
+                        this.habilitarBotones(false);
+                        this.selectList.setEnabled(false);
                         iniciarAnimacion();
-                        a.extraerMultiplesArchivos(jList1.getSelectedIndices(), estadistica_vital_vivos, estadistica_vital_defuncines, control_penatral_vivo);
+                        a.extraerMultiplesArchivos(selectList.getSelectedIndices(), estadistica_vital_vivos, estadistica_vital_defuncines, control_penatral_vivo);
                         area.setText(a.getInfo());
                         pausarAnimacion();
+                        deshabilitarReporte(true);
+                        btnAnalizar.setEnabled(false);
+                        btnLimpiar.setEnabled(true);
                     } else {
                         JOptionPane.showMessageDialog(this, "Usted debe cargar los archivos del Control de papeleria.");
                     }
@@ -313,23 +325,26 @@ public class gestionreporte extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGenerarReporteActionPerformed
 
-    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+    private void selectListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_selectListValueChanged
         // TODO add your handling code here:
-        System.out.println(jList1.getSelectedValuesList());
-        System.out.println(Arrays.asList(jList1.getSelectedIndices()));
-        for (int col : jList1.getSelectedIndices()) {
+        System.out.println(selectList.getSelectedValuesList());
+        System.out.println(Arrays.asList(selectList.getSelectedIndices()));
+        for (int col : selectList.getSelectedIndices()) {
             System.out.println(col);
         }
-        if (jList1.getSelectedIndices().length > 1) {
+        if (selectList.getSelectedIndices().length >= 1) {
+            this.btnAnalizar.setEnabled(true);
+            this.btnAnalizar.requestFocus();
+        } 
+    }//GEN-LAST:event_selectListValueChanged
 
-        } else {
-        }
-    }//GEN-LAST:event_jList1ValueChanged
-
+    public void imaCheck(){
+        
+    }
     private void btnEstadisticaVitalNacimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticaVitalNacimientosActionPerformed
         // TODO add your handling code here:
         estadistica_vital_vivos = capturarArchivo("Ruaf Nacimientos");
-        btnEstadisticaVitalNacimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ima/check.png")));
+        btnEstadisticaVitalNacimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource(getRuta("check.png"))));
         btnEstadisticaVitalFallecimientos.setEnabled(true);
     }//GEN-LAST:event_btnEstadisticaVitalNacimientosActionPerformed
 
@@ -354,7 +369,7 @@ public class gestionreporte extends javax.swing.JFrame {
     private void btnEstadisticaVitalFallecimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticaVitalFallecimientosActionPerformed
         // TODO add your handling code here:
         estadistica_vital_defuncines = capturarArchivo("Ruaf Defunciones");
-        btnEstadisticaVitalFallecimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ima/check.png")));
+        btnEstadisticaVitalFallecimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource(getRuta("check.png"))));
         btnEstadisticaControlParental.setEnabled(true);
     }//GEN-LAST:event_btnEstadisticaVitalFallecimientosActionPerformed
 
@@ -366,8 +381,9 @@ public class gestionreporte extends javax.swing.JFrame {
     private void btnEstadisticaControlParentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticaControlParentalActionPerformed
         // TODO add your handling code here:
         this.control_penatral_vivo = capturarArchivo("Control de papeleria");
-        btnEstadisticaControlParental.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ima/check.png")));
-        this.btnAnalizar.setEnabled(true);
+        btnEstadisticaControlParental.setIcon(new javax.swing.ImageIcon(getClass().getResource(getRuta("check.png"))));
+        this.selectList.setEnabled(true);
+        this.selectList.requestFocusInWindow();
     }//GEN-LAST:event_btnEstadisticaControlParentalActionPerformed
 
     public void deshabilitar(boolean b) {
@@ -393,6 +409,10 @@ public class gestionreporte extends javax.swing.JFrame {
         btnEstadisticaVitalNacimientos.setIcon(null);
         btnEstadisticaControlParental.setIcon(null);
         btnEstadisticaVitalFallecimientos.setIcon(null);
+        deshabilitar(true);
+        deshabilitarReporte(false);
+        habilitarBotones(false);
+        btnEstadisticaVitalNacimientos.setEnabled(true);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnGenerarReporte1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporte1ActionPerformed
@@ -512,11 +532,11 @@ public class gestionreporte extends javax.swing.JFrame {
     private javax.swing.JButton btnGenerarReporte1;
     private javax.swing.JButton btnGenerarReporte2;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList selectList;
     // End of variables declaration//GEN-END:variables
 }
