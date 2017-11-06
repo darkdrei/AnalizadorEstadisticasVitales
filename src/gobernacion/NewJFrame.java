@@ -15,6 +15,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 
 /**
  *
@@ -99,6 +100,22 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         });
+    }
+
+    public class ManejadorBar implements Runnable{
+        private javax.swing.JProgressBar bar ;
+
+        public ManejadorBar(JProgressBar bar) {
+            this.bar = bar;
+        }
+        
+        
+
+        @Override
+        public void run() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
