@@ -30,7 +30,7 @@ public class gestionreporte extends javax.swing.JFrame {
     private File deuda_certificado[] = new File[]{};
     private File estadistica_vital_defuncines[] = new File[]{};
     private File estadistica_vital_vivos[] = new File[]{};
-    private NewJFrame progress_bar ;
+    private NewJFrame progress_bar;
     Analisis a = new Analisis();
 
     /**
@@ -40,7 +40,6 @@ public class gestionreporte extends javax.swing.JFrame {
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ima/list.png"));
         setIconImage(icon);
-        progress_bar = new NewJFrame(this);
     }
 
     /**
@@ -248,6 +247,18 @@ public class gestionreporte extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void iniciarAnimacion() {
+        this.progress_bar = new NewJFrame(this);
+        this.progress_bar.iniciarAnimacion();
+        this.progress_bar.setVisible(true);
+        this.setVisible(false);
+    }
+    
+    public void pausarAnimacion(){
+        this.setVisible(true);
+        this.progress_bar.dispose();
+        this.progress_bar=null;
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         System.out.println(" vivos: " + estadistica_vital_vivos.length + "  " + estadistica_vital_defuncines.length + "   " + control_penatral_vivo.length + "  " + jList1.getSelectedIndices());
@@ -259,8 +270,10 @@ public class gestionreporte extends javax.swing.JFrame {
                         for (int control_penatral_defuncion1 : jList1.getSelectedIndices()) {
                             System.out.println(control_penatral_defuncion1);
                         }
+                        iniciarAnimacion();
                         a.extraerMultiplesArchivos(jList1.getSelectedIndices(), estadistica_vital_vivos, estadistica_vital_defuncines, control_penatral_vivo);
                         area.setText(a.getInfo());
+                        pausarAnimacion();
                     } else {
                         JOptionPane.showMessageDialog(this, "Usted debe cargar los archivos del Control de papeleria.");
                     }
@@ -343,6 +356,10 @@ public class gestionreporte extends javax.swing.JFrame {
         btnEstadisticaControlParental.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ima/check.png")));
     }//GEN-LAST:event_btnEstadisticaControlParentalActionPerformed
 
+    public void deshabilitar(boolean b){
+        
+    }
+    
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         // TODO add your handling code here:
         area.setText("");
@@ -351,7 +368,9 @@ public class gestionreporte extends javax.swing.JFrame {
         deuda_certificado = new File[]{};
         estadistica_vital_defuncines = new File[]{};
         estadistica_vital_vivos = new File[]{};
-         btnEstadisticaVitalNacimientos.setIcon(null);
+        btnEstadisticaVitalNacimientos.setIcon(null);
+        btnEstadisticaControlParental.setIcon(null);
+        btnEstadisticaVitalFallecimientos.setIcon(null);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnGenerarReporte1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporte1ActionPerformed
