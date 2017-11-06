@@ -22,12 +22,31 @@ import javax.swing.JProgressBar;
  * @author dark
  */
 public class NewJFrame extends javax.swing.JFrame {
-
+    private ManejadorBar manejadorBar;
     /**
      * Creates new form NewJFrame
      */
     public NewJFrame() throws IOException {
         initComponents();
+        manejadorBar = new ManejadorBar(jProgressBar1);
+        Thread h1 = new Thread(manejadorBar);
+        h1.start();
+    }
+
+    public ManejadorBar getManejadorBar() {
+        return manejadorBar;
+    }
+
+    public void setManejadorBar(ManejadorBar manejadorBar) {
+        this.manejadorBar = manejadorBar;
+    }
+
+    public JProgressBar getjProgressBar1() {
+        return jProgressBar1;
+    }
+
+    public void setjProgressBar1(JProgressBar jProgressBar1) {
+        this.jProgressBar1 = jProgressBar1;
     }
 
     /**
@@ -104,16 +123,43 @@ public class NewJFrame extends javax.swing.JFrame {
 
     public class ManejadorBar implements Runnable{
         private javax.swing.JProgressBar bar ;
+        private boolean bandera = true;
 
         public ManejadorBar(JProgressBar bar) {
             this.bar = bar;
         }
-        
-        
 
+        public JProgressBar getBar() {
+            return bar;
+        }
+
+        public void setBar(JProgressBar bar) {
+            this.bar = bar;
+        }
+
+        public boolean isBandera() {
+            return bandera;
+        }
+
+        public void setBandera(boolean bandera) {
+            this.bandera = bandera;
+        }
+        
         @Override
         public void run() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            int con=0;
+            while(this.isBandera()){
+                this.getBar().setValue(con);
+                con+=2;
+                if(con>100)
+                    con=0;
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
         }
         
     }
