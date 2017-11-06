@@ -253,11 +253,11 @@ public class gestionreporte extends javax.swing.JFrame {
         this.progress_bar.setVisible(true);
         this.setVisible(false);
     }
-    
-    public void pausarAnimacion(){
+
+    public void pausarAnimacion() {
         this.setVisible(true);
         this.progress_bar.dispose();
-        this.progress_bar=null;
+        this.progress_bar = null;
     }
     private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
         // TODO add your handling code here:
@@ -356,16 +356,18 @@ public class gestionreporte extends javax.swing.JFrame {
         btnEstadisticaControlParental.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ima/check.png")));
     }//GEN-LAST:event_btnEstadisticaControlParentalActionPerformed
 
-    public void deshabilitar(boolean b){
+    public void deshabilitar(boolean b) {
         btnAnalizar.setEnabled(!b);
         deshabilitarReporte(b);
         btnLimpiar.setEnabled(!b);
     }
-    
-    public void deshabilitarReporte(boolean b){
-    
+
+    public void deshabilitarReporte(boolean b) {
+        btnGenerarReporte.setEnabled(b);
+        btnGenerarReporte1.setEnabled(b);
+        btnGenerarReporte2.setEnabled(b);
     }
-    
+
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         // TODO add your handling code here:
         area.setText("");
