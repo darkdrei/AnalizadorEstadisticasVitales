@@ -65,7 +65,7 @@ public class analisis {
         //a.generarWord("C:\\Users\\E7250\\Documents");
         //System.out.println(a.getInfo());
         a.getAnalizador_calidad().setPath("/home/dark/Documentos");
-        a.analizarCalidaDeLaInformacion(2);
+        a.analizarCalidaDeLaInformacion(1);
 //      
 //        ArchivoControlPrenatalDefuncion control_prenatal_defuncion = new ArchivoControlPrenatalDefuncion(new File("/home/dark/aaaaa/SOPORTE/CONTROL DE PAPELERIA 2014-DASALUD.xls"));
 //        control_prenatal_defuncion.seleccionarMunicipio(0);

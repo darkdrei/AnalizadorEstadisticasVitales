@@ -370,6 +370,10 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
             String tem_info_vivos_no_claro = "";
             for (int valor : t.getAnios_vivos()) {
                 con = 0;
+                XWPFParagraph paragraph3 = document.createParagraph();
+            XWPFRun run3 = paragraph3.createRun();
+            run3.addBreak();
+            run3.addBreak();
                 XWPFTable table = document.createTable();
                 table.setInsideHBorder(XWPFTable.XWPFBorderType.THICK, 3, 2, "9965F3");
                 table.setCellMargins(10, 10, 0, 0);
