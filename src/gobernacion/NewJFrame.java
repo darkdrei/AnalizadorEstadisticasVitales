@@ -22,7 +22,10 @@ import javax.swing.JProgressBar;
  * @author dark
  */
 public class NewJFrame extends javax.swing.JFrame {
+
     private ManejadorBar manejadorBar;
+    private gestionreporte reportes;
+
     /**
      * Creates new form NewJFrame
      */
@@ -31,6 +34,19 @@ public class NewJFrame extends javax.swing.JFrame {
         manejadorBar = new ManejadorBar(jProgressBar1);
         Thread h1 = new Thread(manejadorBar);
         h1.start();
+        this.setLocationRelativeTo(this);
+    }
+
+    public void iniciarAnimacion() {
+        Thread h1 = new Thread(manejadorBar);
+        h1.start();
+    }
+
+    public NewJFrame(gestionreporte re) {
+        initComponents();
+        this.reportes = re;
+        manejadorBar = new ManejadorBar(jProgressBar1);
+        this.setLocationRelativeTo(this.reportes);
     }
 
     public ManejadorBar getManejadorBar() {
@@ -121,8 +137,9 @@ public class NewJFrame extends javax.swing.JFrame {
         });
     }
 
-    public class ManejadorBar implements Runnable{
-        private javax.swing.JProgressBar bar ;
+    public class ManejadorBar implements Runnable {
+
+        private javax.swing.JProgressBar bar;
         private boolean bandera = true;
 
         public ManejadorBar(JProgressBar bar) {
@@ -144,24 +161,25 @@ public class NewJFrame extends javax.swing.JFrame {
         public void setBandera(boolean bandera) {
             this.bandera = bandera;
         }
-        
+
         @Override
         public void run() {
-            int con=0;
-            while(this.isBandera()){
+            int con = 0;
+            while (this.isBandera()) {
                 this.getBar().setValue(con);
-                con+=2;
-                if(con>100)
-                    con=0;
+                con += 2;
+                if (con > 100) {
+                    con = 0;
+                }
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+
             }
         }
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
