@@ -8,7 +8,10 @@ package gobernacion;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -27,15 +30,17 @@ public class gestionreporte extends javax.swing.JFrame {
     private File deuda_certificado[] = new File[]{};
     private File estadistica_vital_defuncines[] = new File[]{};
     private File estadistica_vital_vivos[] = new File[]{};
+    private NewJFrame progress_bar ;
     Analisis a = new Analisis();
 
     /**
      * Creates new form gestionreporte
      */
-    public gestionreporte() {
+    public gestionreporte() throws IOException {
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ima/list.png"));
         setIconImage(icon);
+        progress_bar = new NewJFrame(this);
     }
 
     /**
@@ -447,7 +452,11 @@ public class gestionreporte extends javax.swing.JFrame {
                     UIManager.setLookAndFeel("com.jtattoo.plaf.aero.AeroLookAndFeel");
                 } catch (Exception rt) {
                 }
-                new gestionreporte().setVisible(true);
+                try {
+                    new gestionreporte().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(gestionreporte.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
