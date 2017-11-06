@@ -41,7 +41,11 @@ public class NewJFrame extends javax.swing.JFrame {
         Thread h1 = new Thread(manejadorBar);
         h1.start();
     }
-
+    
+    public void pausarAnimacion()
+    {
+        this.getManejadorBar().setBandera(false);
+    }
     public NewJFrame(gestionreporte re) {
         initComponents();
         this.reportes = re;
