@@ -56,7 +56,6 @@ public class gestionreporte extends javax.swing.JFrame {
         btnEstadisticaVitalFallecimientos.setEnabled(false);
         btnLimpiar.setEnabled(true);
         selectList.setEnabled(false);
-        selectList.setEnabled(true);
         btnEstadisticaVitalNacimientos.requestFocus();
     }
 
