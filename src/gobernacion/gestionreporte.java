@@ -274,6 +274,7 @@ public class gestionreporte extends javax.swing.JFrame {
 
     public void pausarAnimacion() {
         this.setVisible(true);
+        this.progress_bar.getManejadorBar().setBandera(false);
         this.progress_bar.dispose();
         this.progress_bar = null;
     }
@@ -396,6 +397,7 @@ public class gestionreporte extends javax.swing.JFrame {
         btnGenerarReporte.setEnabled(b);
         btnGenerarReporte1.setEnabled(b);
         btnGenerarReporte2.setEnabled(b);
+        
     }
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -412,6 +414,7 @@ public class gestionreporte extends javax.swing.JFrame {
         deshabilitar(true);
         deshabilitarReporte(false);
         habilitarBotones(false);
+        selectList.clearSelection();
         btnEstadisticaVitalNacimientos.setEnabled(true);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
