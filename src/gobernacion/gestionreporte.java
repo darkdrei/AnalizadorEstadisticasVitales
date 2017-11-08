@@ -44,11 +44,12 @@ public class gestionreporte extends javax.swing.JFrame {
         } else {
             path = "\\ima\\"+nom;
         }
-        return path;
+        return basePath+path;
     }
     public gestionreporte() throws IOException {
         initComponents();
-        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource(getRuta("list.png")));
+        //Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource(getRuta("list.png")));
+        Image icon = Toolkit.getDefaultToolkit().getImage((getRuta("list.png")));
         setIconImage(icon);
         deshabilitar(true);
         deshabilitarReporte(false);
@@ -343,7 +344,7 @@ public class gestionreporte extends javax.swing.JFrame {
     private void btnEstadisticaVitalNacimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticaVitalNacimientosActionPerformed
         // TODO add your handling code here:
         estadistica_vital_vivos = capturarArchivo("Ruaf Nacimientos");
-        btnEstadisticaVitalNacimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource(getRuta("check.png"))));
+        btnEstadisticaVitalNacimientos.setIcon(new javax.swing.ImageIcon((getRuta("check.png"))));
         btnEstadisticaVitalFallecimientos.setEnabled(true);
     }//GEN-LAST:event_btnEstadisticaVitalNacimientosActionPerformed
 
@@ -368,7 +369,7 @@ public class gestionreporte extends javax.swing.JFrame {
     private void btnEstadisticaVitalFallecimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticaVitalFallecimientosActionPerformed
         // TODO add your handling code here:
         estadistica_vital_defuncines = capturarArchivo("Ruaf Defunciones");
-        btnEstadisticaVitalFallecimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource(getRuta("check.png"))));
+        btnEstadisticaVitalFallecimientos.setIcon(new javax.swing.ImageIcon((getRuta("check.png"))));
         btnEstadisticaControlParental.setEnabled(true);
     }//GEN-LAST:event_btnEstadisticaVitalFallecimientosActionPerformed
 
@@ -380,7 +381,7 @@ public class gestionreporte extends javax.swing.JFrame {
     private void btnEstadisticaControlParentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticaControlParentalActionPerformed
         // TODO add your handling code here:
         this.control_penatral_vivo = capturarArchivo("Control de papeleria");
-        btnEstadisticaControlParental.setIcon(new javax.swing.ImageIcon(getClass().getResource(getRuta("check.png"))));
+        btnEstadisticaControlParental.setIcon(new javax.swing.ImageIcon((getRuta("check.png"))));
         this.selectList.setEnabled(true);
         this.selectList.requestFocusInWindow();
     }//GEN-LAST:event_btnEstadisticaControlParentalActionPerformed
