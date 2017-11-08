@@ -170,7 +170,9 @@ public class NewJFrame extends javax.swing.JFrame {
         @Override
         public void run() {
             int con = 0;
+            System.out.println("----------------------->");
             while (this.isBandera()) {
+                System.out.println("************************************");
                 this.getBar().setValue(con);
                 con += 2;
                 if (con > 100) {
