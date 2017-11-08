@@ -164,6 +164,8 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
          */
         ManejadorMunicipio m = new ManejadorMunicipio();
         semaforo = false;
+        this.reporte = new ArrayList<>();
+        this.analizador_calidad.getDatos().setRegistros(new ArrayList<RegistrosMunicipio>());
         for (int n : muni) {
             System.out.println("Analizando " + m.getMunicipio(n) + "***********************");
             respuesta += "Analizando " + m.getMunicipio(n) + "***********************";
