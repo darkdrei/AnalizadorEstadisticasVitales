@@ -50,6 +50,7 @@ public class NewJFrame extends javax.swing.JFrame {
         initComponents();
         this.reportes = re;
         manejadorBar = new ManejadorBar(jProgressBar1);
+        this.setLocationRelativeTo(this.reportes);
 //        this.setLocationRelativeTo(this.reportes);
     }
 
@@ -82,6 +83,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
+
+        jProgressBar1.setValue(10);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,7 +175,7 @@ public class NewJFrame extends javax.swing.JFrame {
             int con = 0;
             System.out.println("----------------------->");
             while (this.isBandera()) {
-                System.out.println("************************************");
+                System.out.println("************************************ "+con+"  "+this.getBar().getValue());
                 this.getBar().setValue(con);
                 con += 2;
                 if (con > 100) {
