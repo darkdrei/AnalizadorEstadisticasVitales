@@ -343,7 +343,7 @@ public class gestionreporte extends javax.swing.JFrame {
         
     }
     private void btnEstadisticaVitalNacimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticaVitalNacimientosActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: dsdsdsds
         estadistica_vital_vivos = capturarArchivo("Ruaf Nacimientos");
         btnEstadisticaVitalNacimientos.setIcon(new javax.swing.ImageIcon((getRuta("check.png"))));
         btnEstadisticaVitalFallecimientos.setEnabled(true);
