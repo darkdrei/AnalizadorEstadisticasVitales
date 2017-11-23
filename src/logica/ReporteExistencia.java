@@ -10,8 +10,25 @@ package logica;
  * @author dark
  */
 public class ReporteExistencia implements ExportFile{
-    
+    private ContenedorInfoMunicipio data ;
 
+    public ReporteExistencia(ContenedorInfoMunicipio data) {
+        this.data = data;
+    }
+
+    public ReporteExistencia() {
+        this.data = new ContenedorInfoMunicipio();
+    }
+    
+    public ContenedorInfoMunicipio getData() {
+        return data;
+    }
+
+    public void setData(ContenedorInfoMunicipio data) {
+        this.data = data;
+    }
+    
+    
     @Override
     public void writeFile() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
