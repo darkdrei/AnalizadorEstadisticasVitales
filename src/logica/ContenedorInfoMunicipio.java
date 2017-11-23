@@ -5,10 +5,17 @@
  */
 package logica;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author dark
  */
 public class ContenedorInfoMunicipio {
+    private ArrayList<TemporalInfo> municipios;
+
+    public ContenedorInfoMunicipio(ArrayList<TemporalInfo> municipios) {
+        this.municipios = municipios;
+    }
     
 }
