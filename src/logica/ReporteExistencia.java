@@ -9,6 +9,12 @@ package logica;
  *
  * @author dark
  */
-public class ReporteExistencia {
+public class ReporteExistencia implements ExportFile{
+    
+
+    @Override
+    public void writeFile() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
