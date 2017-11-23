@@ -18,4 +18,20 @@ public class ContenedorInfoMunicipio {
         this.municipios = municipios;
     }
     
+    public ContenedorInfoMunicipio() {
+        this.municipios = new ArrayList<>();
+    }
+    
+    public void add(TemporalInfo t){
+        this.municipios.add(t);
+    }
+    
+    public int size(){
+        return this.municipios.size();
+    }
+    
+    public ArrayList getData(){
+        return this.municipios;
+    }
+    
 }
