@@ -46,6 +46,7 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
     private String info = "";
     private ArrayList<TemporalInfo> reporte = new ArrayList<>();
     private AnalizadorCalidad analizador_calidad;
+    private RepExtMunicipioWord reporte_ext_minicipio_word ;
 
     public ArrayList<TemporalInfo> getReporte() {
         return reporte;
@@ -63,6 +64,7 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
         this.estadistica_vital_defunfion = new ArchivoEstadisticaVitalDefunciones(estadistica_vital_defunfion);
         this.estadistica_vital_nacimientos = new ArchivoEstadisticaVitalNacimientos(estadistica_vital_nacimientos);
         this.analizador_calidad = new AnalizadorCalidad();
+        this.reporte_ext_minicipio_word = new RepExtMunicipioWord();
     }
 
     public Analisis() {
@@ -75,6 +77,7 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
         this.estadistica_vital_defunfion_todos = new ArchivoEstadisticaVitalDefunciones();
         this.estadistica_vital_nacimientos_todos = new ArchivoEstadisticaVitalNacimientos();
         this.analizador_calidad = new AnalizadorCalidad();
+        this.reporte_ext_minicipio_word = new RepExtMunicipioWord();
     }
 
     public AnalizadorCalidad getAnalizador_calidad() {
