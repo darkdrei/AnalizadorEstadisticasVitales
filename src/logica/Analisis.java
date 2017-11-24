@@ -28,7 +28,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
  *
  * @author dark
  */
-public class Analisis implements OperacionesLibro, OperacionesCalidad {
+public class Analisis implements OperacionesLibro, OperacionesCalidad, EntregasMunicipio {
 
     private boolean semaforo;
     private File file;
@@ -1059,5 +1059,10 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
     @Override
     public ArrayList<Object> extraerNodos(ArrayList<String> op) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void generarInformeWord() {
+        this.reporte_ext_minicipio_word.writeFile();
     }
 }
