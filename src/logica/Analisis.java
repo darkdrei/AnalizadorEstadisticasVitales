@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -220,8 +221,9 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
             tem_info.setMunicipio(m.getMunicipio(n));
             tem_info.setVivos(this.getControl_prenatal_vivo().extraerNodos(this.getControl_prenatal_vivo().getColumna()));
             tem_info.setDifuntos(this.getControl_prenatal_defuncion().extraerNodos(this.getControl_prenatal_defuncion().getColumna()));
-            tem_info.setAnios_vivos(this.getControl_prenatal_vivo().getAnios());
+            tem_info.setAnios_vivos((this.getControl_prenatal_vivo().getAnios()));
             tem_info.setAnios_difuntos(this.getControl_prenatal_defuncion().getAnios());
+            this.reporte_ext_minicipio_word.getData().add(tem_info);
             this.reporte.add(tem_info);
             this.analizador_calidad.addRegistro(new RegistrosMunicipio(this.getEstadistica_vital_defunfion().getDefunciones(), this.getEstadistica_vital_nacimientos().getNacimientos(), n));
             /**
