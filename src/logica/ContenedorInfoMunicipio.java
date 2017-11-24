@@ -30,7 +30,7 @@ public class ContenedorInfoMunicipio {
         return this.municipios.size();
     }
     
-    public ArrayList getData(){
+    public ArrayList<TemporalInfo> getData(){
         return this.municipios;
     }
     
