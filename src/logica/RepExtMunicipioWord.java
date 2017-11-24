@@ -35,19 +35,35 @@ public class RepExtMunicipioWord extends ReporteExistencia{
     
     public class TemporalMes{
         private int mes;
-        private ArrayList<TemporalInfo> datos;
+        private ArrayList<Object> datos;
         
         public TemporalMes(int m){
             this.mes= m;
             this.datos = new ArrayList<>();
         }
        
-        public void addDato(TemporalInfo d){
+        public void addDato(Object d){
             this.datos.add(d);
         }
         
         public int size(){
             return this.datos.size();
+        }
+    }
+    
+    public class TemporalesMeses{
+        private ArrayList<TemporalMes> meses;
+        
+        public TemporalesMeses(){
+            this.meses = new ArrayList<>();
+        }
+        
+        public void addDato(int mes,Object o){
+            stop:
+            for(TemporalMes m:this.meses){
+                if(mes == m.){
+                }
+            }
         }
     }
 }
