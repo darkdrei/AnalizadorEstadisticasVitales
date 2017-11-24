@@ -21,7 +21,9 @@ public class RepExtMunicipioWord extends ReporteExistencia{
     
      @Override
     public void writeFile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for(TemporalInfo t: this.getData().getData()){
+        
+        }
     }
     
 }
