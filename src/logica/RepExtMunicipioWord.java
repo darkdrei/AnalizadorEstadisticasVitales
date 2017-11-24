@@ -49,6 +49,24 @@ public class RepExtMunicipioWord extends ReporteExistencia{
         public int size(){
             return this.datos.size();
         }
+
+        public int getMes() {
+            return mes;
+        }
+
+        public void setMes(int mes) {
+            this.mes = mes;
+        }
+
+        public ArrayList<Object> getDatos() {
+            return datos;
+        }
+
+        public void setDatos(ArrayList<Object> datos) {
+            this.datos = datos;
+        }
+        
+        
     }
     
     public class TemporalesMeses{
