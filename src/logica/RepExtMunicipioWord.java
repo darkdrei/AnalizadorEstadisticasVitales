@@ -78,10 +78,20 @@ public class RepExtMunicipioWord extends ReporteExistencia{
         
         public void addDato(int mes,Object o){
             stop:
-            for(TemporalMes m:this.meses){
-                if(mes == m.){
+            for(int i=0;i <this.meses.size();i++){
+                if(mes == this.meses.get(i).getMes()){
+                    this.meses.get(i).addDato(o);
+                    break stop;
                 }
             }
+        }
+
+        public ArrayList<TemporalMes> getMeses() {
+            return meses;
+        }
+
+        public void setMeses(ArrayList<TemporalMes> meses) {
+            this.meses = meses;
         }
     }
 }
