@@ -46,21 +46,29 @@ public class AgrupadorCalidadExcel implements ExportFile {
         this.filas_excel = filas_excel;
     }
 
-    @Override
+   @Override
     public void writeFile() {
+        System.out.println("Entrando al metodo writeFile");
         try {
             FileCopy c = new FileCopy();
             ManejadorMunicipio m = new ManejadorMunicipio();
             String path = "";
-            java.util.Date fecha = new Date();
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss"); 
+            String fechaComoCadena = sdf.format(new Date()); 
+            
             String basePath = new File("").getAbsolutePath();
             if (System.getProperty("os.name").contains("Linux")) {
-                path = this.getPath() + "/" + "calidad_" + fecha + "" + ".xlsx";
+                path = this.getPath() + "/" + "calidad_" + fechaComoCadena + "" + ".xlsx";
                 c.fileCopy(basePath + "/data/calidad.xlsx", path);
             } else {
-                path = this.getPath() + "\\" + "calidad_" + fecha + "" + ".xlsx";
+                path = this.getPath() + "\\" + "calidad.xlsx";
                 c.fileCopy(basePath + "\\data\\calidad.xlsx", path);
+                System.out.println("1. Variable Path: "+path);
+                 System.out.println("1. Variable basePathPath: "+basePath);
             }
+            System.out.println("2. Variable Path: "+path);
+            System.out.println("2. Variable basePathPath: "+basePath);
             File file = new File(path);
             //OPRTUNIDAD
             InputStream excelFile = null;
@@ -97,7 +105,9 @@ public class AgrupadorCalidadExcel implements ExportFile {
         } catch (IOException ex) {
             Logger.getLogger(CalidadExcel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("saliendo al metodo writeFile");
     }
+
 
     public String getPath() {
         return path;
