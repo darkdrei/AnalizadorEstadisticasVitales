@@ -19,14 +19,19 @@ public class FileCopy {
     public FileCopy() {
     }
 
-    public void fileCopy(String sourceFile, String destinationFile) {
+     public void fileCopy(String sourceFile, String destinationFile) {
         System.out.println("Desde: " + sourceFile);
         System.out.println("Hacia: " + destinationFile);
 
         try {
             File inFile = new File(sourceFile);
             File outFile = new File(destinationFile);
-
+            inFile.setExecutable(true);
+            inFile.setReadable(true);
+            inFile.setWritable(true);
+            outFile.setExecutable(true);
+            outFile.setReadable(true);
+            outFile.setWritable(true);
             FileInputStream in = new FileInputStream(inFile);
             FileOutputStream out = new FileOutputStream(outFile);
             int c;
@@ -38,6 +43,6 @@ public class FileCopy {
             out.close();
         } catch (IOException e) {
             System.err.println("Hubo un error de entrada/salida!!!");
-        }
-    }
+            System.out.println("e: "+e);
+        
 }
