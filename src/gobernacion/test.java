@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.FileCopy;
@@ -29,7 +30,13 @@ public class test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println(20*100/80);
+        java.util.Date fecha = new Date();
+        System.out.println(fecha);
+//        System.out.println(20*100/80);
+//        String so = System.getProperty("os.name"); 
+//        System.out.println(so);
+//            String basePath = new File("").getAbsolutePath();
+//            System.out.println(basePath);
 //        InputStream excelFile = null;
 //        try {
 //            // TODO code application logic here

@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +28,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
  *
  * @author dark
  */
-public class Analisis implements OperacionesLibro, OperacionesCalidad {
+public class Analisis implements OperacionesLibro, OperacionesCalidad, EntregasMunicipio {
 
     private boolean semaforo;
     private File file;
@@ -46,6 +47,7 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
     private String info = "";
     private ArrayList<TemporalInfo> reporte = new ArrayList<>();
     private AnalizadorCalidad analizador_calidad;
+    private RepExtMunicipioWord reporte_ext_minicipio_word ;
 
     public ArrayList<TemporalInfo> getReporte() {
         return reporte;
@@ -54,7 +56,6 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
     public void setReporte(ArrayList<TemporalInfo> reporte) {
         this.reporte = reporte;
     }
-    
 
     public Analisis(File control_prenatal_defuncion, File control_prenatal_vivo, File deuda_certificado, File estadistica_vital_defunfion, File estadistica_vital_nacimientos) {
         this.file = estadistica_vital_defunfion;
@@ -64,6 +65,7 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
         this.estadistica_vital_defunfion = new ArchivoEstadisticaVitalDefunciones(estadistica_vital_defunfion);
         this.estadistica_vital_nacimientos = new ArchivoEstadisticaVitalNacimientos(estadistica_vital_nacimientos);
         this.analizador_calidad = new AnalizadorCalidad();
+        this.reporte_ext_minicipio_word = new RepExtMunicipioWord();
     }
 
     public Analisis() {
@@ -76,6 +78,7 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
         this.estadistica_vital_defunfion_todos = new ArchivoEstadisticaVitalDefunciones();
         this.estadistica_vital_nacimientos_todos = new ArchivoEstadisticaVitalNacimientos();
         this.analizador_calidad = new AnalizadorCalidad();
+        this.reporte_ext_minicipio_word = new RepExtMunicipioWord();
     }
 
     public AnalizadorCalidad getAnalizador_calidad() {
@@ -165,6 +168,8 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
          */
         ManejadorMunicipio m = new ManejadorMunicipio();
         semaforo = false;
+        this.reporte = new ArrayList<>();
+        this.analizador_calidad.getDatos().setRegistros(new ArrayList<RegistrosMunicipio>());
         for (int n : muni) {
             System.out.println("Analizando " + m.getMunicipio(n) + "***********************");
             respuesta += "Analizando " + m.getMunicipio(n) + "***********************";
@@ -216,8 +221,9 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
             tem_info.setMunicipio(m.getMunicipio(n));
             tem_info.setVivos(this.getControl_prenatal_vivo().extraerNodos(this.getControl_prenatal_vivo().getColumna()));
             tem_info.setDifuntos(this.getControl_prenatal_defuncion().extraerNodos(this.getControl_prenatal_defuncion().getColumna()));
-            tem_info.setAnios_vivos(this.getControl_prenatal_vivo().getAnios());
+            tem_info.setAnios_vivos((this.getControl_prenatal_vivo().getAnios()));
             tem_info.setAnios_difuntos(this.getControl_prenatal_defuncion().getAnios());
+            this.reporte_ext_minicipio_word.getData().add(tem_info);
             this.reporte.add(tem_info);
             this.analizador_calidad.addRegistro(new RegistrosMunicipio(this.getEstadistica_vital_defunfion().getDefunciones(), this.getEstadistica_vital_nacimientos().getNacimientos(), n));
             /**
@@ -245,9 +251,13 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
     }
 
     @Override
-    public void analizarCalidaDeLaInformacion() {
-        this.analizador_calidad.analizarCalidaDeLaInformacion();
-        this.analizador_calidad.analizarCalidaDeLaInformacion(null);
+    public void analizarCalidaDeLaInformacion(int n) {
+        if (n == 1) {
+            this.analizador_calidad.analizarCalidaDeLaInformacion();
+        } else if (n == 2) {
+            this.analizador_calidad.analizarCalidaDeLaInformacion(null);
+        }
+
     }
 
     @Override
@@ -255,63 +265,12 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public class TemporalInfo {
-
-        private String municipio = "";
-        private ArrayList<Object> vivos = new ArrayList<>();
-        private ArrayList<Object> difuntos = new ArrayList<>();
-        private ArrayList<Integer> anios_vivos = new ArrayList<>();
-        private ArrayList<Integer> anios_difuntos = new ArrayList<>();
-
-        public ArrayList<Integer> getAnios_vivos() {
-            return anios_vivos;
-        }
-
-        public void setAnios_vivos(ArrayList<Integer> anios_vivos) {
-            this.anios_vivos = anios_vivos;
-        }
-
-        public ArrayList<Integer> getAnios_difuntos() {
-            return anios_difuntos;
-        }
-
-        public void setAnios_difuntos(ArrayList<Integer> anios_difuntos) {
-            this.anios_difuntos = anios_difuntos;
-        }
-
-        
-        public TemporalInfo() {
-        }
-
-        public TemporalInfo(String municipio) {
-            this.municipio = municipio;
-        }
-
-        public String getMunicipio() {
-            return municipio;
-        }
-
-        public void setMunicipio(String municipio) {
-            this.municipio = municipio;
-        }
-
-        public ArrayList<Object> getVivos() {
-            return vivos;
-        }
-
-        public void setVivos(ArrayList<Object> vivos) {
-            this.vivos = vivos;
-        }
-
-        public ArrayList<Object> getDifuntos() {
-            return difuntos;
-        }
-
-        public void setDifuntos(ArrayList<Object> difuntos) {
-            this.difuntos = difuntos;
-        }
-
+    @Override
+    public void analizarCalidaDeLaInformacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
 
     public void generarWord(String ruta) {
         for (TemporalInfo t : this.getReporte()) {
@@ -363,6 +322,10 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
             String tem_info_vivos_no_claro = "";
             for (int valor : t.getAnios_vivos()) {
                 con = 0;
+                XWPFParagraph paragraph3 = document.createParagraph();
+            XWPFRun run3 = paragraph3.createRun();
+            run3.addBreak();
+            run3.addBreak();
                 XWPFTable table = document.createTable();
                 table.setInsideHBorder(XWPFTable.XWPFBorderType.THICK, 3, 2, "9965F3");
                 table.setCellMargins(10, 10, 0, 0);
@@ -382,7 +345,7 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
                 par_run1.setFontFamily("Arial Black");
                 par_run1.setFontSize(13);
                 cell1.setColor("9965F3");
-                par_run1.setText("Fecha de entrega 20"+valor);
+                par_run1.setText("Fecha de entrega 20" + valor);
                 par_run.setBold(true);
                 for (Object vivo : vivos) {
                     ControlPapeleriaNacimientos nacimiento = (ControlPapeleriaNacimientos) vivo;
@@ -414,11 +377,13 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
                 info += "\n\tAnio no numerico  son " + con + " registros.";
                 info += tem_info_vivos_no_claro;
             }
-            /*************************DEFUNCIONES***********************************/
+            /**
+             * ***********************DEFUNCIONES**********************************
+             */
             run2.addBreak();
 
             paragraph.setAlignment(ParagraphAlignment.CENTER);
-             vivos = t.getDifuntos();
+            vivos = t.getDifuntos();
             run2.setText("Total registros defunciones pendientes : " + vivos.size());
             for (int i = 0; i < vivos.size(); i++) {
                 int pos = i;
@@ -471,7 +436,7 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
                 par_run1.setFontFamily("Arial Black");
                 par_run1.setFontSize(13);
                 cell1.setColor("9965F3");
-                par_run1.setText("Fecha de entrega 20"+valor);
+                par_run1.setText("Fecha de entrega 20" + valor);
                 par_run.setBold(true);
                 for (Object vivo : vivos) {
                     ControlPapeleriaDefunciones nacimiento = (ControlPapeleriaDefunciones) vivo;
@@ -504,7 +469,15 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
                 info += tem_info_vivos_no_claro;
             }
             try {
-                FileOutputStream output = new FileOutputStream(ruta+"\\"+t.getMunicipio()+".docx");
+                FileCopy c = new FileCopy();
+                String path = "";
+                if (System.getProperty("os.name").contains("Linux")) {
+                    path =  ruta + "/" + t.getMunicipio() + ".docx";
+                } else {
+                    path = ruta + "\\" + t.getMunicipio() + ".docx";
+                }
+                System.out.println("//////////////////// " + path);
+                FileOutputStream output = new FileOutputStream(path);
                 document.write(output);
                 output.close();
             } catch (Exception e) {
@@ -1086,5 +1059,10 @@ public class Analisis implements OperacionesLibro, OperacionesCalidad {
     @Override
     public ArrayList<Object> extraerNodos(ArrayList<String> op) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void generarInformeWord() {
+        this.reporte_ext_minicipio_word.writeFile();
     }
 }

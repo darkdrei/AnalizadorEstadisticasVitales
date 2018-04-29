@@ -41,17 +41,18 @@ public class Reporte implements ExportFile {
     private int con_multiplicidad = 0;
     private ArrayList<FilaEstadisticaVitalNacimientos> multiplicidad = new ArrayList<>();
     private int municipio;
-    private ArrayList<EstadisticaVital_defuncion> area_defuncion = new ArrayList<>();
-    private ArrayList<EstadisticaVital_defuncion> tipo_defuncion = new ArrayList<>();
-    private ArrayList<EstadisticaVital_defuncion> direccion_defuncion = new ArrayList<>();
-    private ArrayList<EstadisticaVital_defuncion> mujeres = new ArrayList<>();
-    private ArrayList<EstadisticaVital_defuncion> tipo_profesional = new ArrayList<>();
-    private ArrayList<EstadisticaVital_defuncion> estado_defuncion = new ArrayList<>();
+    protected ArrayList<EstadisticaVital_defuncion> area_defuncion = new ArrayList<>();
+    protected ArrayList<EstadisticaVital_defuncion> tipo_defuncion = new ArrayList<>();
+    protected ArrayList<EstadisticaVital_defuncion> direccion_defuncion = new ArrayList<>();
+    protected ArrayList<EstadisticaVital_defuncion> mujeres = new ArrayList<>();
+    protected ArrayList<EstadisticaVital_defuncion> tipo_profesional = new ArrayList<>();
+    protected ArrayList<EstadisticaVital_defuncion> estado_defuncion = new ArrayList<>();
     private float size = 0;
     private ArrayList<String> instituciones_de_salud_nacimiento = new ArrayList<>();
     private ArrayList<String> instituciones_de_salud_defunciones = new ArrayList<>();
     private int total_nacimientos = 0;
     private int total_defunciones = 0;
+    private String path="";
 
     public Reporte(int con_area_nacimiento,
             ArrayList<FilaEstadisticaVitalNacimientos> area_nacimiento,
@@ -513,4 +514,13 @@ public class Reporte implements ExportFile {
         this.total_defunciones = total_defunciones;
     }
 
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+    
+    
 }

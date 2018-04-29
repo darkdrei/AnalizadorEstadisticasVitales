@@ -48,6 +48,16 @@ public class AnalizadorCalidad implements OperacionesCalidad {
     private ArrayList<EstadisticaVital_defuncion> mujeres = new ArrayList<>();
     private ArrayList<EstadisticaVital_defuncion> tipo_profesional = new ArrayList<>();
     private ArrayList<EstadisticaVital_defuncion> estado_defuncion =new ArrayList<>();
+    private String path ="";
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+    
 
     public AnalizadorCalidad() {
         this.datos = new ContenedorRegistroMunicio();
@@ -274,6 +284,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             word.setInstituciones_de_salud_defunciones(instituciones_de_salud_defunciones);
             word.setTotal_nacimientos(r.getNacimientos().size());
             word.setTotal_defunciones(r.getDefunciones().size());
+            word.setPath(this.getPath());
             word.writeFile();
         }
     }
@@ -281,6 +292,7 @@ public class AnalizadorCalidad implements OperacionesCalidad {
     @Override
     public void analizarCalidaDeLaInformacion(Object data) {
         String hospital ="";
+        AgrupadorCalidadExcel exceles= new AgrupadorCalidadExcel(this.getPath());
         for (RegistrosMunicipio r : this.getDatos().getRegistros()) {
             float con_oporunidad =0;
             con_area_nacimiento = 0;
@@ -309,7 +321,6 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             estado = new ArrayList<>();
             con_multiplicidad = 0;
             multiplicidad = new ArrayList<>();
-            System.out.println("###########################33333");
             ArrayList<String> instituciones_de_salud_nacimiento = new ArrayList<>();
             ArrayList<String> instituciones_de_salud_defunciones = new ArrayList<>();
             stop:
@@ -505,9 +516,15 @@ public class AnalizadorCalidad implements OperacionesCalidad {
             word.setTotal_defunciones(r.getDefunciones().size());
             word.setRegistros_oportunos_nacimientos(con_oporunidad);
             word.setRegistros_oportunos_defunciones(oportunidad_defuncion);
-            System.out.println("*********** "+con_oporunidad+"   "+oportunidad_defuncion);
-            word.writeFile();
+            word.setPath(this.getPath());
+            exceles.getFilas_excel().add(word.getCelda());
         }
+        exceles.writeFile();
+    }
+
+    @Override
+    public void analizarCalidaDeLaInformacion(int n) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
