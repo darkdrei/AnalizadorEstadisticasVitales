@@ -18,6 +18,7 @@ public class ManejadorMunicipio {
     public ManejadorMunicipio() {
         this.municipios = new ArrayList<>();
         this.municipios.add(new logica.Municipio(0, "ACHI"));
+        this.municipios.add(new Municipio(0, "ACH�"));
         this.municipios.add(new Municipio(0, "ACHÍ"));
         this.municipios.add(new Municipio(1, "MAGANGUE"));
         this.municipios.add(new Municipio(1, "MAGANGUÉ"));
@@ -26,12 +27,26 @@ public class ManejadorMunicipio {
         this.municipios.add(new Municipio(3, "PINILLOS"));
         this.municipios.add(new Municipio(4, "SAN JACINTO DEL CAUCA"));
         this.municipios.add(new Municipio(5, "TIQUISIO"));
-        this.municipios.add(new Municipio(0, "ACH�"));
+        this.municipios.add(new Municipio(6, "SAN JUAN NEPOMUCENO"));
+        this.municipios.add(new Municipio(7, "SAN JACINTO"));
         this.municipios.add(new Municipio(8, "MAR�A LA BAJA"));
         this.municipios.add(new Municipio(8, "MARIALABAJA"));
         this.municipios.add(new Municipio(8, "MARIA LA BAJA"));
-        this.municipios.add(new Municipio(7, "SAN JACINTO"));
-        this.municipios.add(new Municipio(6, "SAN JUAN NEPOMUCENO"));
+        this.municipios.add(new Municipio(9, "ARROYO HONDO"));
+        this.municipios.add(new Municipio(9, "ARROYOHONDO"));
+        this.municipios.add(new Municipio(10, "ARJONA"));
+        this.municipios.add(new Municipio(11, "CALAMAR"));
+        this.municipios.add(new Municipio(12, "TURBACO"));
+        this.municipios.add(new Municipio(13, "TURBANA"));
+        this.municipios.add(new Municipio(14, "MAHATES"));
+        this.municipios.add(new Municipio(15, "ALTOS DEL ROSARIO"));
+        this.municipios.add(new Municipio(16, "SAN MARTIN DE LOBA"));
+        this.municipios.add(new Municipio(17, "RIO VIEJO"));
+        this.municipios.add(new Municipio(18, "BARRANCO DE LOBA"));
+        this.municipios.add(new Municipio(19, "REGIDOR"));
+        this.municipios.add(new Municipio(20, "EL PEÑON"));
+        this.municipios.add(new Municipio(21, "NOROSI"));
+        
     }
 
     public String getMunicipio(int id) {
